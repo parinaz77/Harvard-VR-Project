@@ -18,9 +18,18 @@
     </div>
 	</div>
 
+	<hr />
+	<progress value="0" max="100" id="uploader">0%</progress>
+
+	<form method="POST" action="/api/photo">
+	<input type="file" value="upload" id="filebutton">
+	<input type="submit" value="Submit">
+	</form>
+	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript" src=view.js></script>
+	
 
 </body>
 </html>
