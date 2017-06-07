@@ -51,3 +51,7 @@ p:before { content: "\00a0 "; }
 .color {
 	color:gray !important;
 }
+
+.center{
+  align-items: center;
+}

@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 
 
-	$('.row').html(
+	$('.row-footer').html(
     '<div class="col l6 s12">'+
       '<h5 class="white-text">Footer Content</h5>'+
       '<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>'+
@@ -34,8 +34,6 @@ $(document).ready(function() {
     '</div>' )
 
   $('.footer-copyright').html(        
-    '<div class="container">'+
     '© 2017 Copyright Text'+
-    '<a class="grey-text text-lighten-4 right" href="#!">More Links</a>'+
-    '</div>' )
+    '<a class="grey-text text-lighten-4 right" href="#!">More Links</a>' )
 })

@@ -29,7 +29,7 @@
 		<p>After you created your collection you can view your collection in VR in any format choosen</p>
  		<!-- <a class="btn-floating btn-large waves-effect waves-light red plus-button"><i class="material-icons">add</i></a> -->
 	<!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn" href="#modal1">Create Collection</a>
+	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create Collection</a></div>
  		<br>
  		<br>
  		<br>
@@ -48,7 +48,22 @@
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
       <h4>Create a new collection</h4>
-      <p>A bunch of text</p>
+      
+				<div class="row">
+			    <form class="col s12">
+			      <div class="row">
+			        <div class="input-field col s6">
+			          <input id="title" type="text" class="validate">
+			          <label for="title">Title</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <input id="description" type="tel" class="validate">
+			          <label for="description">Description</label>
+			        </div>
+			      </div>
+			    </form>
+			  </div>
+
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
@@ -60,9 +75,9 @@
 
 	<footer class="page-footer">
 		<div class="container">
-    	<div class="row"></div>
+    	<div class="row-footer"></div>
+			<div class="footer-copyright"></div>
   	</div>
-		<div class="footer-copyright"></div>
   </footer>
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
