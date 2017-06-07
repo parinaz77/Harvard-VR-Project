@@ -55,3 +55,7 @@ p:before { content: "\00a0 "; }
 .center{
   align-items: center;
 }
+
+#modal1 {
+	min-height: 350px;
+}

@@ -4,7 +4,7 @@ $(document).ready(function() {
     '<ul id="nav-mobile" class="right hide-on-med-and-down">'+
       '<li><a href="/collections">Collections</a></li>'+
       '<li><a href="#TOP">About us</a></li>'+
-      '<li><a href="collapsible.html">Contact us</a></li>'+
+      '<li><a href="#BOTTOM">Contact us</a></li>'+
     '</ul>')
 
 	$('.parallax').parallax();
