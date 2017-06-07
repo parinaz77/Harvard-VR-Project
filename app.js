@@ -8,9 +8,12 @@ const app = express();
 const indexRoutes = require('./routes/index');
 
 // const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" || "mongodb://localhost:27017/harvard-vr";
-var url = process.env.DATABASEURL || "mongodb://localhost:27017/harvard-vr";
+// var url = process.env.DATABASEURL || "mongodb://localhost:27017/harvard-vr";
 
-mongoose.connect(url);
+// mongodb://<dbuser>:<dbpassword>@ds113841.mlab.com:13841/harvard-vr
+
+
+mongoose.connect("mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr");
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
