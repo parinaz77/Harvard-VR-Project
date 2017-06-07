@@ -1,15 +1,49 @@
+
+ body {
+ 	/*min-height: 1500px;*/
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  color: gray !important;
+  font-size: 15px;
+ }
+
+ /*nav{
+ 	position: fixed;
+ }*/
+
+ .nav-wrapper{
+ 	padding-left: 10px;
+ }
+
 .parallax-container {
   max-height: 400px;
  }
 
- body {
- 	min-height: 800px;
- }
-
- .parallax {
+.parallax {
  	height: 100px;
  }
 
-/* img {
- 	border: 2px solid red;
- }*/
+p {
+	text-align: center;
+}
+
+blockquote{
+	margin:0 0;
+}
+
+p:before { content: "\00a0 "; }
+
+.button {
+	padding-top: 10px;
+	padding-right: 10px;
+}
+.start-button {
+	float: right;
+}
+
+.plus-button {
+	float: right;
+}
+
+.color {
+	color:gray !important;
+}
