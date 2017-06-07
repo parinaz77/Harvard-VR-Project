@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Harvard VR Project</title>
+	<link rel="stylesheet" href="styles.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+</head>
+<body>
+	<nav>
+	  <div class="nav-col">
+    <a href="/" class="brand-logo">Harvard VR</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Home</a></li>
+    </ul>
+
+	  </div>
+
+	</nav>
+
+
+	<div class='container'>
+		<p>You can create new collections by clicking on the plus button</p>
+		<p>Add up to any pictures you wish to view in VR</p>
+		<p>After you created your collection you can view your collection in VR in any format choosen</p>
+ 		<!-- <a class="btn-floating btn-large waves-effect waves-light red plus-button"><i class="material-icons">add</i></a> -->
+	<!-- Modal Trigger -->
+	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create Collection</a></div>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Create a new collection</h4>
+      
+				<div class="row">
+			    <form class="col s12">
+			      <div class="row">
+			        <div class="input-field col s6">
+			          <input id="title" type="text" class="validate">
+			          <label for="title">Title</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <input id="description" type="tel" class="validate">
+			          <label for="description">Description</label>
+			        </div>
+			      </div>
+			    </form>
+			  </div>
+
+			  <form action="#">
+			    <div class="file-field input-field">
+			      <div class="btn">
+			        <span>File</span>
+			        <input type="file" multiple>
+			      </div>
+			      <div class="file-path-wrapper">
+			        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+			      </div>
+			    </div>
+  			</form>
+    </div>
+    	<!-- <progress value="0" max="100" id="uploader">0%</progress> -->
+		
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+    </div>
+  </div>
+
+
+	</div>
+
+	<footer class="page-footer">
+		<div class="container">
+    	<div class="row row-footer"></div>
+  	</div>
+		<div class="footer-copyright"></div>
+  </footer>
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src=view.js></script>
+	
+
+</body>
+</html>
