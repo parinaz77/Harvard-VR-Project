@@ -63,7 +63,10 @@
 			      </div>
 			    </form>
 			  </div>
-
+    	<!-- <progress value="0" max="100" id="uploader">0%</progress> -->
+			<form method="POST" action="/api/photo">
+				<input type="file" value="upload" id="filebutton">
+			</form>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
@@ -75,9 +78,9 @@
 
 	<footer class="page-footer">
 		<div class="container">
-    	<div class="row-footer"></div>
-			<div class="footer-copyright"></div>
+    	<div class="row row-footer"></div>
   	</div>
+		<div class="footer-copyright"></div>
   </footer>
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
