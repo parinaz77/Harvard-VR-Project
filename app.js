@@ -1,17 +1,21 @@
-const format = require('util').format;
 const express = require('express');
 const fs = require('fs');
 const mongoose = require('mongoose');
-var multer = require('multer');
+var request = require('request');
+var fileUpload = require('express-fileupload');
 
-var upload = multer({dest: "./uploads"});
-
+var gcloud = require('google-cloud');
+var gcs = gcloud.storage({
+  projectId: 'harvard-vr-169919'
+  // keyFilename: '/path/to/keyfile.json'
+});
+var bucket = gcs.bucket('harvard-vr')
 
 const app = express();
 const indexRoutes = require('./routes/index');
 
-const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" || "mongodb://localhost:27017/harvard-vr";
-// var url = process.env.DATABASEURL || "mongodb://localhost:27017/harvard-vr";
+// const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" || "mongodb://localhost:27017/harvard-vr";
+// const url = "mongodb://parinaz77:password@ds113282.mlab.com:13282/heroku_03ks57hf" || "mongodb://localhost:27017/harvard-vr";
 
 // mongodb://<dbuser>:<dbpassword>@ds113841.mlab.com:13841/harvard-vr
 
@@ -19,65 +23,67 @@ const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" ||
 // var url = process.env.DATABASEURL || "mongodb://localhost:27017/harvard-vr";
 // mongodb://<dbuser>:<dbpassword>@ds113282.mlab.com:13282/heroku_03ks57hf
 
-mongoose.connect('mongodb://parinaz77:password@ds113282.mlab.com:13282/heroku_03ks57hf');
+mongoose.connect("mongodb://localhost:27017/harvard-vr");
 
-var conn = mongoose.connection;
 
-var gfs;
 
-var Grid = require("gridfs-stream");
-Grid.mongo = mongoose.mongo;
+const collectionSchema = new mongoose.Schema({
+	title: String,
+	bucketName: String,
+	description: String,
+	images: []
+});
 
+const Collection = mongoose.model('Collection', collectionSchema);
+
+// Collection.create({title: 'harvard-vr', images: ['test.png', 'test_2.png']});
+// 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+app.use(fileUpload());
 
 app.use(indexRoutes);
 
-conn.once("open", function(){
-  gfs = Grid(conn.db);
-  app.get("/", function(req,res){
-    //renders a multipart/form-data form
-    res.render("home");
-  });
+var collection = gcs.bucket('harvard-vr');
 
-  //second parameter is multer middleware.
-  app.post("/", upload.single("avatar"), function(req, res, next){
-    //create a gridfs-stream into which we pipe multer's temporary file saved in uploads. After which we delete multer's temp file.
-    var writestream = gfs.createWriteStream({
-      filename: req.file.originalname
-    });
-    //
-    // //pipe multer's temp file /uploads/filename into the stream we created above. On end deletes the temporary file.
-    fs.createReadStream("./uploads/" + req.file.filename)
-      .on("end", function(){fs.unlink("./uploads/"+ req.file.filename, function(err){res.send("success")})})
-        .on("err", function(){res.send("Error uploading image")})
-          .pipe(writestream);
-  });
-
-  // sends the image we saved by filename.
-  app.get("/:filename", function(req, res){
-      var readstream = gfs.createReadStream({filename: req.params.filename});
-      readstream.on("error", function(err){
-        res.send("No image found with that title");
-      });
-      readstream.pipe(res);
-  });
-
-  //delete the image
-  app.get("/delete/:filename", function(req, res){
-    gfs.exist({filename: req.params.filename}, function(err, found){
-      if(err) return res.send("Error occured");
-      if(found){
-        gfs.remove({filename: req.params.filename}, function(err){
-          if(err) return res.send("Error occured");
-          res.send("Image deleted!");
-        });
-      } else{
-        res.send("No image found with that title");
-      }
-    });
-  });
+// Example request: 'https://www.googleapis.com/storage/v1/b/harvard-vr/o/test.png'
+app.get('/collections', function(req, res) {
+	Collection.find({title: 'harvard-vr'}, function(err, collections) {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(collections[0].images[0]);
+			res.render('collections', {collection: collections[0]})
+		}
+	});
 });
+
+// Test route to GCS API for downloading a single image in bucket and storing the image in a local folder
+app.get('/test', function(req, res) {
+	collection.file('test.png').download({
+		destination: 'photos/test.png'
+	}, function(err) {
+		console.log(err);
+	});
+
+	// collection.upload('/photos/collection1/test.')
+	// res.send(collection);
+});
+
+app.post('/upload', function(req, res) {
+	// console.log(req.files)
+	// console.log('public/photos/' + req.files.image.name);
+	let image = req.files.image;
+	image.mv('public/photos/' + req.files.image.name);
+	collection.upload('public/photos/' + req.files.image.name), function(err, file) {
+		if(!err) {
+			console.log('Upload successful');
+		}
+	}
+	res.redirect('/collections')
+});
+
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, process.env.IP, () => {
