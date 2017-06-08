@@ -28,6 +28,8 @@
 	<!-- Modal Trigger Button-->
 	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create Collection</a></div>
  		<br>
+ 		<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0]%>">
+ 		<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[1]%>">
  		<br>
  		<br>
  		<br>
@@ -45,7 +47,7 @@
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
       <h4>Create a new collection</h4>
-			  <form class="col s12" method="POST" action="/" enctype="multipart/form-data">
+			  <form class="col s12" method="POST" action="/upload" enctype="multipart/form-data">
 					<div class="row">
 			      <div class="row">
 			        <div class="input-field col s6">
@@ -61,7 +63,7 @@
 			    <div class="file-field input-field">
 			      <div class="btn">
 			        <span>File</span>
-			        <input type="file" multiple name="avatar">
+			        <input type="file" multiple name="image">
 			      </div>
 			      <div class="file-path-wrapper">
 			        <input class="file-path validate" type="text" placeholder="Upload one or more files">
