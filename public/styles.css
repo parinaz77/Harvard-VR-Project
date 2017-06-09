@@ -63,4 +63,6 @@ p:before { content: "\00a0 "; }
 	display:inline; 
 }
 
-
+nav {
+	background-color: gray!important;
+}
