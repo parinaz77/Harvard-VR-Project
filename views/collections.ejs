@@ -8,6 +8,7 @@
   <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link type="text/css" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 
 </head>
 <body>
@@ -27,14 +28,31 @@
  		<!-- <a class="btn-floating btn-large waves-effect waves-light red plus-button"><i class="material-icons">add</i></a> -->
 	<!-- Modal Trigger Button-->
 	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create Collection</a></div>
- 		<br>
- 		<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0]%>">
- 		<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[1]%>">
+ 		<br> 
  		<br>
  		<br>
  		<br>
- 		<br>
- 		<br>
+    <%for(var count = 0; count < collections.length; count++){%>
+ 			<div class="row border">
+        <div class="col s6 m6">
+          <div class="card">
+            <div class="card-image">
+							<img src="http://storage.googleapis.com/harvard-vr/<%=collections[count].images[0] %>">
+              <span class="card-title"><%=collections[count].title %></span>
+            </div>
+            <div class="card-content">
+              <p><%=collections[count].description %></p>
+            </div>
+            <div class="card-action">
+              <a href="#">View</a>
+              <a href="#">Delete</a>
+              <a href="#">Edit</a>
+            </div>
+          </div>
+        </div>
+      <% }%>
+         
+      
  		<br>
  		<br>
  		<br>

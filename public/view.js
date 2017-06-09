@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 	$('.modal').modal();
 
-
+	
 
 
 	$('.row-footer').html(

@@ -59,3 +59,8 @@ p:before { content: "\00a0 "; }
 #modal1 {
 	min-height: 350px;
 }
+.border{
+	display:inline; 
+}
+
+

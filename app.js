@@ -36,7 +36,7 @@ const collectionSchema = new mongoose.Schema({
 
 const Collection = mongoose.model('Collection', collectionSchema);
 
-// Collection.create({title: 'harvard-vr', images: ['test.png', 'test_2.png']});
+Collection.create({title: 'vr-research', images: ['test_3.png','test_4.png']});
 // 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -48,12 +48,13 @@ var collection = gcs.bucket('harvard-vr');
 
 // Example request: 'https://www.googleapis.com/storage/v1/b/harvard-vr/o/test.png'
 app.get('/collections', function(req, res) {
-	Collection.find({title: 'harvard-vr'}, function(err, collections) {
+	Collection.find({}, function(err, collections) {
 		if(err) {
 			console.log(err);
 		} else {
-			console.log(collections[0].images[0]);
-			res.render('collections', {collection: collections[0]})
+			console.log(collections[0])
+			console.log(collections[1])
+			res.render('collections', {collections: collections})
 		}
 	});
 });
