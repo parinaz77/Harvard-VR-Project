@@ -56,8 +56,7 @@ app.get('/collections', function(req, res) {
 		} else {
 			console.log('collections route', collections);
 			// res.render('collections', {collection: collections[0]})
-			console.log(collections[0])
-			console.log(collections[1])
+			console.log(collections)
 			res.render('collections', {collections: collections})
 		}
 	});
