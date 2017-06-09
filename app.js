@@ -37,7 +37,7 @@ const collectionSchema = new mongoose.Schema({
 const Collection = mongoose.model('Collection', collectionSchema);
 
 // Collection.create({title: 'harvard-vr', images: ['test.png', 'test_2.png']});
-// 
+
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(fileUpload());
@@ -48,11 +48,11 @@ var collection = gcs.bucket('harvard-vr');
 
 // Example request: 'https://www.googleapis.com/storage/v1/b/harvard-vr/o/test.png'
 app.get('/collections', function(req, res) {
-	Collection.find({title: 'harvard-vr'}, function(err, collections) {
+	Collection.find({}, function(err, collections) {
 		if(err) {
 			console.log(err);
 		} else {
-			console.log(collections[0].images[0]);
+			console.log('collections route', collections);
 			res.render('collections', {collection: collections[0]})
 		}
 	});
@@ -65,9 +65,6 @@ app.get('/test', function(req, res) {
 	}, function(err) {
 		console.log(err);
 	});
-
-	// collection.upload('/photos/collection1/test.')
-	// res.send(collection);
 });
 
 app.post('/upload', function(req, res) {
@@ -80,7 +77,17 @@ app.post('/upload', function(req, res) {
 			console.log('Upload successful');
 		}
 	}
-	res.redirect('/collections')
+	console.log(req.body.title);
+
+	// Create a new Collection with information from form in 'collections.ejs'
+	Collection.create({title: req.body.title, description: req.body.description, images: [req.files.image.name]}, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log('Collection created successfully!');
+			res.redirect('/collections');
+		}
+	});
 });
 
 

@@ -28,8 +28,9 @@
 	<!-- Modal Trigger Button-->
 	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create Collection</a></div>
  		<br>
- 		<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0]%>">
- 		<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[1]%>">
+ 		<% if(collection) { %>
+ 				<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0]%>">
+ 		<% } %>
  		<br>
  		<br>
  		<br>
@@ -51,11 +52,11 @@
 					<div class="row">
 			      <div class="row">
 			        <div class="input-field col s6">
-			          <input id="title" type="text" class="validate">
+			          <input name="title" type="text">
 			          <label for="title">Title</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="description" type="tel" class="validate">
+			          <input name="description" type="text">
 			          <label for="description">Description</label>
 			        </div>
 			      </div>
