@@ -56,7 +56,7 @@ app.get('/collections', function(req, res) {
 		} else {
 			console.log('collections route', collections);
 			// res.render('collections', {collection: collections[0]})
-			console.log(collections)
+			// console.log(collections)
 			res.render('collections', {collections: collections})
 		}
 	});
@@ -75,14 +75,18 @@ app.post('/upload', function(req, res) {
 	// console.log(req.files)
 	// console.log('public/photos/' + req.files.image.name);
 	let image = req.files.image;
-	image.mv('public/photos/' + req.files.image.name);
-	collection.upload('public/photos/' + req.files.image.name), function(err, file) {
-		if(!err) {
-			console.log('Upload successful');
+	// console.log(1, image)
+	// console.log(2, req.files)
+	for (var i=0; i < image.length; i++){
+		image[i].mv('public/photos/' + req.files.image[i].name);
+		collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
+			if(!err) {
+				console.log('Upload successful');
+			}
 		}
 	}
 	// Create a new Collection with information from form in 'collections.ejs'
-	Collection.create({title: req.body.title, description: req.body.description, images: [req.files.image.name]}, function(err, collection) {
+	Collection.create({title: req.body.title, description: req.body.description, images: req.files.image}, function(err, collection) {
 		if(err) {
 			console.log(err);
 		} else {
