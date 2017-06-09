@@ -8,7 +8,7 @@
   <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link type="text/css" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <!-- <link type="text/css" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
 
 </head>
 <body>
@@ -27,6 +27,7 @@
 		<p>After you created your collection you can view your collection in VR in any format choosen</p>
  		<!-- <a class="btn-floating btn-large waves-effect waves-light red plus-button"><i class="material-icons">add</i></a> -->
 	<!-- Modal Trigger Button-->
+<<<<<<< HEAD
 	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create Collection</a></div>
  		<br>
  		<br>
@@ -36,6 +37,14 @@
  		<br>
  		<br>
     <%collections.forEach(function(collection) {%>
+=======
+	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create New Collection</a></div>
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="ajax-response">
  			<div class="row border">
         <div class="col s6 m6">
           <div class="card">
@@ -54,16 +63,8 @@
           </div>
         </div>
       <% })%>
-         
+    </div>   
       
- 		<br>
- 		<br>
- 		<br>
- 		<br>
- 		<br>
- 		<br>
-
-
   <!-- Modal Structure -->
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
@@ -92,7 +93,7 @@
 			      </div>
 			    </div>
 			    <div class="modal-footer">
-			    	<input class="waves-effect waves-light btn-large start-button" type="submit" value="Save">
+			    	<input class="waves-effect waves-light btn-large start-button submit-ajax" type="submit" value="Save">
 			    </div>
 				</form>
 	    </div>
@@ -109,7 +110,7 @@
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-	<script type="text/javascript" src=view.js></script>
+	<script type="text/javascript" src=js/view.js></script>
 	
 
 </body>
