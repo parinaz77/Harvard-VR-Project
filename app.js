@@ -3,6 +3,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 var request = require('request');
 var fileUpload = require('express-fileupload');
+var methodOverride = require('method-override');
 
 var gcloud = require('google-cloud');
 var gcs = gcloud.storage({
@@ -36,11 +37,12 @@ const collectionSchema = new mongoose.Schema({
 
 const Collection = mongoose.model('Collection', collectionSchema);
 
-// Collection.create({title: 'harvard-vr', images: ['test.png', 'test_2.png']});
-
+// Collection.create({title: 'vr-research', images: ['test_3.png','test_4.png']});
+// 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(fileUpload());
+app.use(methodOverride('_method'));
 
 app.use(indexRoutes);
 
@@ -53,7 +55,10 @@ app.get('/collections', function(req, res) {
 			console.log(err);
 		} else {
 			console.log('collections route', collections);
-			res.render('collections', {collection: collections[0]})
+			// res.render('collections', {collection: collections[0]})
+			console.log(collections[0])
+			console.log(collections[1])
+			res.render('collections', {collections: collections})
 		}
 	});
 });
@@ -77,8 +82,6 @@ app.post('/upload', function(req, res) {
 			console.log('Upload successful');
 		}
 	}
-	console.log(req.body.title);
-
 	// Create a new Collection with information from form in 'collections.ejs'
 	Collection.create({title: req.body.title, description: req.body.description, images: [req.files.image.name]}, function(err, collection) {
 		if(err) {
@@ -90,6 +93,29 @@ app.post('/upload', function(req, res) {
 	});
 });
 
+app.get('/collections/:id/edit', function(req, res) {
+	console.log(req.params.id);
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('edit', { collection: collection })
+		}
+	})
+});
+
+app.put('/collections/:id', function(req, res) {
+	// let collection = Collection.findByIdAndUpdate(req.params.id, function())
+	let image = req.files.image;
+	image.mv('public/photos/' + req.files.image.name);
+	collection.upload('public/photos/' + req.files.image.name), function(err, file) {
+		if(!err) {
+			console.log('Upload successful');
+		}
+	}
+	res.redirect('/collections');
+	console.log('Hit PUT route,', req.files)
+})
 
 
 const port = process.env.PORT || 3000;
