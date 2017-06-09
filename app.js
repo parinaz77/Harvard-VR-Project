@@ -10,7 +10,30 @@ var gcs = gcloud.storage({
   projectId: 'harvard-vr-169919'
   // keyFilename: '/path/to/keyfile.json'
 });
-var bucket = gcs.bucket('harvard-vr')
+
+
+// Imports the Google Cloud client library
+const Storage = require('@google-cloud/storage');
+
+// Your Google Cloud Platform project ID
+const projectId = 'YOUR_PROJECT_ID';
+
+// Instantiates a client
+const storage = Storage({
+  projectId: 'harvard-vr-169919'
+});
+
+// The name for the new bucket
+const bucket = 'harvard-vr';
+
+// Creates the new bucket
+storage.createBucket(bucket)
+  .then(() => {
+    console.log(`Bucket ${bucket} created.`);
+  })
+  .catch((err) => {
+    console.error('ERROR:', err);
+  });
 
 const app = express();
 const indexRoutes = require('./routes/index');
