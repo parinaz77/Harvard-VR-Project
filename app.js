@@ -36,7 +36,7 @@ const collectionSchema = new mongoose.Schema({
 
 const Collection = mongoose.model('Collection', collectionSchema);
 
-Collection.create({title: 'vr-research', images: ['test_3.png','test_4.png']});
+// Collection.create({title: 'vr-research', images: ['test_3.png','test_4.png']});
 // 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');

@@ -35,13 +35,13 @@
 		<br>
 		<div class="ajax-response">
     <%for(var count = 0; count < collections.length; count++){%>
- 			<div class="row border]">
+ 			<div class="row border">
         <div class="col s6 m6">
           <div class="card">
             <div class="card-image">
 							<img src="http://storage.googleapis.com/harvard-vr/<%=collections[count].images[0] %>">
-              <span class="card-title"><%=collections[count].title %></span>
             </div>
+              <span class="card-title"><%=collections[count].title %></span>
             <div class="card-content">
               <p><%=collections[count].description %></p>
             </div>
