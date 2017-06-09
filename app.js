@@ -15,7 +15,7 @@ var bucket = gcs.bucket('harvard-vr')
 const app = express();
 const indexRoutes = require('./routes/index');
 
-// const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" || "mongodb://localhost:27017/harvard-vr";
+const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" || "mongodb://localhost:27017/harvard-vr";
 // const url = "mongodb://parinaz77:password@ds113282.mlab.com:13282/heroku_03ks57hf" || "mongodb://localhost:27017/harvard-vr";
 
 // mongodb://<dbuser>:<dbpassword>@ds113841.mlab.com:13841/harvard-vr
@@ -24,7 +24,7 @@ const indexRoutes = require('./routes/index');
 // var url = process.env.DATABASEURL || "mongodb://localhost:27017/harvard-vr";
 // mongodb://<dbuser>:<dbpassword>@ds113282.mlab.com:13282/heroku_03ks57hf
 
-mongoose.connect("mongodb://localhost:27017/harvard-vr");
+mongoose.connect(url);
 
 
 
