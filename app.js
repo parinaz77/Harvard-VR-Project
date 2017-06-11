@@ -11,6 +11,8 @@ var gcs = gcloud.storage({
   // keyFilename: '/path/to/keyfile.json'
 });
 
+const clientID = '144708981782-5hht2hv7cve7omnkd09ia3s9jc79btdd.apps.googleusercontent.com';
+const clientSecret = 'rDo72rlRiXovvVl1JBeH0C-g';
 
 // Imports the Google Cloud client library
 const Storage = require('@google-cloud/storage');
