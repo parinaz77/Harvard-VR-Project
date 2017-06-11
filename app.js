@@ -101,9 +101,7 @@ app.post('/upload', function(req, res) {
 	let image = req.files.image;
 	image.mv('public/photos/' + req.files.image.name);
 	collection.upload('public/photos/' + req.files.image.name), function(err, file) {
-		if(!err) {
-			console.log('Upload successful');
-		}
+		console.log('Attempting to upload image');
 	}
 	// Create a new Collection with information from form in 'collections.ejs'
 	Collection.create({title: req.body.title, description: req.body.description, images: [req.files.image.name]}, function(err, collection) {
