@@ -27,27 +27,17 @@
 		<p>After you created your collection you can view your collection in VR in any format choosen</p>
  		<!-- <a class="btn-floating btn-large waves-effect waves-light red plus-button"><i class="material-icons">add</i></a> -->
 	<!-- Modal Trigger Button-->
-	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create Collection</a></div>
- 		<br>
- 		<br>
- 		<br>
- 		<br> 
- 		<br>
- 		<br>
- 		<br>
-    <%collections.forEach(function(collection) {%>
-		<br>
-		<br>
-		<br>
-		<br>
+	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create New Collection</a></div>
+
 		<div class="ajax-response">
+    <%collections.forEach(function(collection) {%>
  			<div class="row border">
         <div class="col s6 m6">
           <div class="card">
             <div class="card-image">
-							<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0] %>">
-              <span class="card-title"><%=collection.title %></span>
+							<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0].name %>">
             </div>
+              <span class="card-title"><%=collection.title %></span>
             <div class="card-content">
               <p><%=collection.description %></p>
             </div>
@@ -69,11 +59,12 @@
 					<div class="row">
 			      <div class="row">
 			        <div class="input-field col s6">
-			          <input name="title" type="text">
+			          <input name="title" type="text" class="validate">
 			          <label for="title">Title</label>
 			        </div>
 			        <div class="input-field col s6">
 			          <input id="description" name="description" type="text" class="validate">
+			          <input name="description" type="text" class="validate">
 			          <label for="description">Description</label>
 			        </div>
 			      </div>
@@ -90,6 +81,7 @@
 			    <div class="modal-footer">
 			    	<input class="waves-effect waves-light btn-large start-button submit-ajax" type="submit" value="Save">
 			    </div>
+			    <div class="load-bar"></div>				  
 				</form>
 	    </div>
 	  </div>

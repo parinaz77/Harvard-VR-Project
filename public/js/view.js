@@ -15,8 +15,13 @@ $(document).ready(function() {
 
 	$('.modal').modal();
 
-	
-
+	$('.submit-ajax').on('click', function(){
+    $('.load-bar').html(
+      '<div class="progress">'+
+      '<div class="indeterminate"></div>'+
+      '</div>')
+    }
+  )
 
 	$('.row-footer').html(
     '<div class="col l6 s12">'+
