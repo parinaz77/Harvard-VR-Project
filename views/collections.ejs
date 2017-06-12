@@ -47,10 +47,9 @@
 						<%} else { %>
 							<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
 						<%}%>
-
-            <span class="card-title"><%=collection.title %></span>
           <div class="card-content">
-            <p><%=collection.description %></p>
+            <span class="card-title"><%=collection.title %></span>
+            <p class="p-desc"><%=collection.description %></p>
           </div>
           <div class="card-action">
             <a href="/collections/<%=collection._id%>/vr">View in VR</a>

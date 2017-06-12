@@ -70,3 +70,17 @@ nav {
 .page-footer{
 	background-color: #26a69a !important;
 }
+
+.p-desc {
+	text-align: inherit;
+}
+
+.carousel {
+	height: 200px !important;
+}
+
+.carousel .carousel-item{
+	width: 250px !important;
+	top: 34px !important;
+}
+}
