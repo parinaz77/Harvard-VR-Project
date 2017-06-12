@@ -20,15 +20,21 @@
               <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
             <%}%>
       </a-assets>
-
-      <a-curvedimage src="#ui3" radius="5.7" theta-length="180" height="9"
+      <%if(collection.images.length){ %>
+        <%for(var i=0; i < collection.images.length; i++){ %>
+      <a-curvedimage src="#ui<%=i%>" radius="5.7" theta-length="180" height="9"
                      rotation="0 90 0" scale="1.2 1.2 1.2"></a-curvedimage>
-      <a-curvedimage src="#mozvr" radius="5.7" theta-length="17" height=".36"
+        <%}%>
+          <%} else { %>
+            <a-curvedimage src="#ui1" radius="5.7" theta-length="180" height="9"
+                     rotation="0 90 0" scale="1.2 1.2 1.2"></a-curvedimage>
+          <%}%>
+<!--       <a-curvedimage src="#mozvr" radius="5.7" theta-length="17" height=".36"
                      opacity="0.2" rotation="0 250 0" position="0 2 0"></a-curvedimage>
       <a-curvedimage src="#ui1" radius="5.7" theta-length="72" height="2.6"
                      rotation="0 80 0" position="0 0.7 0" scale="0.6 0.6 0.6"></a-curvedimage>
       <a-curvedimage src="#ui2" radius="5.7" theta-length="70" height="3.02"
-                     rotation="0 -130 0" scale="0.8 0.8 0.8"></a-curvedimage>
+                     rotation="0 -130 0" scale="0.8 0.8 0.8"></a-curvedimage> -->
 
       <a-image position="0 -5 0" src="#shadow2" rotation="-90 0 0" scale="6 6 6"></a-image>
       <a-sky color="#fff"></a-sky>
