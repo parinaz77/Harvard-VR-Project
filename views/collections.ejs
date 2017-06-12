@@ -32,50 +32,33 @@
 	<div class="ajax-response">
 		<div class="row border">
   	<%collections.forEach(function(collection) {%>
-      <div class="col s6 m4">
+      <div class="col s12 m6">
         <div class="card">
-          <div class="card-image">
+          <!-- <div class="card-image">
 						<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0].name %>">
-          </div>
+          </div> -->
+          <div class="carousel">
+					<%if(collection.images.length){ %>
+						<%for(var i=0; i < collection.images.length; i++){ %>
+				    	<a class="carousel-item" href="#one!"><img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>"></a>
+							<!-- <img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>"> -->
+							<%}%>
+	 			 	</div>
+						<%} else { %>
+							<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
+						<%}%>
+
             <span class="card-title"><%=collection.title %></span>
           <div class="card-content">
             <p><%=collection.description %></p>
           </div>
           <div class="card-action">
-            <a class="view-modal" href="#modal2">View</a>
+            <a href="/collections/<%=collection._id%>/vr">View in VR</a>
             <a href="/collections/<%=collection._id%>/delete">Delete</a>
             <a href="/collections/<%=collection._id%>/edit">Edit</a>
-            <a href="/collections/<%=collection._id%>/vr">View in VR</a>
           </div>
         </div>
       </div>
-
-
-      <!-- Modal Structure to view collection-->
-		 	<div id="modal2" class="modal modal-fixed-footer">
-		    <div class="modal-content">
-		      <h4><%=collection.title %></h4>
-		      <p><%=collection.description %></p>
-		    </div>
-				
-				<%if(collection.images.length){ %>
-					<%for(var i=0; i < collection.images.length; i++){ %>
-						<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>">
-						<%}%>
-					<%} else { %>
-						<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
-					<%}%>
-				
-
-
-
-		    <!-- <img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0].name %>"> -->
-		    <div class="card-action">
-		    </div>
-		    <div class="modal-footer">
-		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">close</a>
-		    </div>
-			</div>
 	  <% })%>
   	</div>  
  	</div> 
@@ -120,7 +103,7 @@
 
 
 
-	<div>
+
 <!-- Footer of the page -->
 		<footer class="page-footer">
 			<div class="container">
@@ -128,7 +111,6 @@
 	  	</div>
 			<div class="footer-copyright"></div>
 	  </footer>
-	</div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="materialize/js/materialize.min.js"></script>

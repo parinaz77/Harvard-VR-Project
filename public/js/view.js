@@ -14,6 +14,7 @@ $(document).ready(function() {
 	});
 
 	$('.modal').modal();
+  $('.carousel').carousel();
 
 	$('.submit-ajax').on('click', function(){
     $('.load-bar').html(

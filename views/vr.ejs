@@ -2,75 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>360&deg; Image Gallery</title>
-    <meta name="description" content="360&deg; Image Gallery - A-Frame">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
-    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
-    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
-    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
-    <script src="components/set-image.js"></script>
-
-
-    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyC3PmJALFPJoQKu4P3Wmu5KxWDEd2RV6Go",
-        authDomain: "harvard-vr-app.firebaseapp.com",
-        databaseURL: "https://harvard-vr-app.firebaseio.com",
-        projectId: "harvard-vr-app",
-        storageBucket: "harvard-vr-app.appspot.com",
-        messagingSenderId: "740680318212"
-      };
-      firebase.initializeApp(config);
-    </script>
-
+    <title>Curved Images</title>
+    <meta name="description" content="Curved Images - A-Frame">
+    <script src="aframe/dist/aframe-master.js"></script>
   </head>
   <body>
     <a-scene>
       <a-assets>
-        <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
-        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-        <img id="cubes-thumb" crossorigin="anonymous" src="test.jpg">
-        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
-        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
-        <img id="cubes" crossorigin="anonymous" src="test.jpg">
-        <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
-
-        <!-- Image link template to be reused. -->
-        <script id="link" type="text/html">
-          <a-entity class="link"
-            geometry="primitive: plane; height: 1; width: 1"
-            material="shader: flat; src: ${thumb}"
-            event-set__1="_event: mousedown; scale: 1 1 1"
-            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
-            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-            event-set__4="_event: mouseleave; scale: 1 1 1"
-            set-image="on: click; target: #image-360; src: ${src}"
-            sound="on: click; src: #click-sound"></a-entity>
-        </script>
+        <img id="mozvr" src="aframe/assets/img/mozvr.png">
+        <img id="shadow2" src="aframe/assets/img/radial-shadow-2.png">
+          <%if(collection.images.length){ %>
+            <%for(var i=0; i < collection.images.length; i++){ %>
+              <img id="ui<%i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>">
+              <%}%>
+            <%} else { %>
+              <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
+            <%}%>
       </a-assets>
 
-      <!-- 360-degree image. -->
-      <a-sky id="image-360" radius="10" src="#city"></a-sky>
+      <a-curvedimage src="#ui3" radius="5.7" theta-length="180" height="9"
+                     rotation="0 90 0" scale="1.2 1.2 1.2"></a-curvedimage>
+      <a-curvedimage src="#mozvr" radius="5.7" theta-length="17" height=".36"
+                     opacity="0.2" rotation="0 250 0" position="0 2 0"></a-curvedimage>
+      <a-curvedimage src="#ui1" radius="5.7" theta-length="72" height="2.6"
+                     rotation="0 80 0" position="0 0.7 0" scale="0.6 0.6 0.6"></a-curvedimage>
+      <a-curvedimage src="#ui2" radius="5.7" theta-length="70" height="3.02"
+                     rotation="0 -130 0" scale="0.8 0.8 0.8"></a-curvedimage>
 
-      <!-- Image links. -->
-      <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
-        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
-      </a-entity>
-
-      <!-- Camera + cursor. -->
-      <a-entity camera look-controls>
-        <a-cursor id="cursor"
-          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-          event-set__1="_event: mouseenter; color: springgreen"
-          event-set__2="_event: mouseleave; color: black"
-          fuse="true"
-          raycaster="objects: .link"></a-cursor>
+      <a-image position="0 -5 0" src="#shadow2" rotation="-90 0 0" scale="6 6 6"></a-image>
+      <a-sky color="#fff"></a-sky>
+      <a-entity position="0 0 1.5">
+        <a-camera></a-camera>
       </a-entity>
     </a-scene>
   </body>
