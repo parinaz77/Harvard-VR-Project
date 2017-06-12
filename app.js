@@ -10,7 +10,7 @@ var gcs = gcloud.storage({
   projectId: 'harvard-vr-169919',
   keyFilename: './harvard-vr-93a42650c36e.json'
 });
-var bucket = gcs.bucket('harvard-vr')
+var bucket = gcs.bucket('harvard-vr');
 
 const app = express();
 const indexRoutes = require('./routes/index');
@@ -25,8 +25,6 @@ const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" ||
 // mongodb://<dbuser>:<dbpassword>@ds113282.mlab.com:13282/heroku_03ks57hf
 
 mongoose.connect(url);
-
-
 
 const collectionSchema = new mongoose.Schema({
 	title: String,
@@ -71,14 +69,26 @@ app.get('/test', function(req, res) {
 
 app.post('/upload', function(req, res) {
 	let image = req.files.image;
-	for (var i=0; i < image.length; i++){
-		image[i].mv('public/photos/' + req.files.image[i].name);
-		collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
-			if(!err) {
-				console.log('Upload successful');
+	console.log(image.length);
+
+	if (image.length) {
+		for (var i=0; i < image.length; i++){
+			image[i].mv('public/photos/' + req.files.image[i].name);
+			collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
+				if(!err) {
+					console.log('Upload successful');
+				}
 			}
 		}
-	}
+	} else {
+		image.mv('public/photos/' + req.files.image.name);
+			collection.upload('public/photos/' + req.files.image.name), function(err, file) {
+				if(!err) {
+					console.log('Upload successful');
+				}
+			}
+		}
+	
 	// Create a new Collection with information from form in 'collections.ejs'
 	Collection.create({title: req.body.title, description: req.body.description, images: req.files.image}, function(err, collection) {
 		if(err) {
