@@ -55,6 +55,51 @@ router.post('/upload', function(req, res) {
 	});
 });
 
+router.get('/collections/:id/edit', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('edit', { collection: collection })
+		}
+	})
+});
+
+router.get('/collections/:id/delete', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			collection.remove( function ( err, todo ){
+			res.redirect('/collections');
+    });
+		}
+	})
+});
+
+router.get('/collections/:id/view', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('collection-view', {collection: collection})
+		}
+	})
+});
+
+router.put('/collections/:id', function(req, res) {
+	// let collection = Collection.findByIdAndUpdate(req.params.id, function())
+	let image = req.files.image;
+	image.mv('public/photos/' + req.files.image.name);
+	collection.upload('public/photos/' + req.files.image.name), function(err, file) {
+		if(!err) {
+			console.log('Upload successful');
+		}
+	}
+	res.redirect('/collections');
+	console.log('Hit PUT route,', req.files)
+})
+
 router.get('/', function(req, res) {
 	res.render('index');
 });
