@@ -6,8 +6,14 @@ router.get('/', function(req, res) {
 	res.render('index');
 });
 
-router.get('/vr', function(req, res) {
-	res.render('vr');
+router.get('/collections/:id/vr', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('vr', {collection: collection})
+		}
+	})
 });
 
 // router.get('/collections', function(req, res) {

@@ -31,7 +31,7 @@
 
 	<div class="ajax-response">
 		<div class="row border">
-  <%collections.forEach(function(collection) {%>
+  	<%collections.forEach(function(collection) {%>
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
@@ -45,6 +45,7 @@
             <a class="view-modal" href="#modal2">View</a>
             <a href="/collections/<%=collection._id%>/delete">Delete</a>
             <a href="/collections/<%=collection._id%>/edit">Edit</a>
+            <a href="/collections/<%=collection._id%>/vr">View in VR</a>
           </div>
         </div>
       </div>
