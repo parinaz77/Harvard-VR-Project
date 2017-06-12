@@ -1,16 +1,16 @@
 const express = require('express');
 const fs = require('fs');
 const mongoose = require('mongoose');
-var request = require('request');
+// var request = require('request');
 var fileUpload = require('express-fileupload');
 var methodOverride = require('method-override');
 
-var gcloud = require('google-cloud');
-var gcs = gcloud.storage({
-  projectId: 'harvard-vr-169919',
-  keyFilename: './harvard-vr-93a42650c36e.json'
-});
-var bucket = gcs.bucket('harvard-vr');
+// var gcloud = require('google-cloud');
+// var gcs = gcloud.storage({
+//   projectId: 'harvard-vr-169919',
+//   keyFilename: './harvard-vr-93a42650c36e.json'
+// });
+// var bucket = gcs.bucket('harvard-vr');
 
 const app = express();
 const indexRoutes = require('./routes/index');
@@ -26,14 +26,14 @@ const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" ||
 
 mongoose.connect(url);
 
-const collectionSchema = new mongoose.Schema({
-	title: String,
-	bucketName: String,
-	description: String,
-	images: []
-});
+// const collectionSchema = new mongoose.Schema({
+// 	title: String,
+// 	bucketName: String,
+// 	description: String,
+// 	images: []
+// });
 
-const Collection = mongoose.model('Collection', collectionSchema);
+// const Collection = mongoose.model('Collection', collectionSchema);
 
 // Collection.create({title: 'vr-research', images: ['test_3.png','test_4.png']});
 // 
@@ -44,61 +44,52 @@ app.use(methodOverride('_method'));
 
 app.use(indexRoutes);
 
-var collection = gcs.bucket('harvard-vr');
+// var collection = gcs.bucket('harvard-vr');
 
 // Example request: 'https://www.googleapis.com/storage/v1/b/harvard-vr/o/test.png'
-app.get('/collections', function(req, res) {
-	Collection.find({}, function(err, collections) {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log('collections route', collections);
-			res.render('collections', {collections: collections})
-		}
-	});
-});
+// app.get('/collections', function(req, res) {
+// 	Collection.find({}, function(err, collections) {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log('collections route', collections);
+// 			res.render('collections', {collections: collections})
+// 		}
+// 	});
+// });
 
-// Test route to GCS API for downloading a single image in bucket and storing the image in a local folder
-app.get('/test', function(req, res) {
-	collection.file('test.png').download({
-		destination: 'photos/test.png'
-	}, function(err) {
-		console.log(err);
-	});
-});
+// app.post('/upload', function(req, res) {
+// 	let image = req.files.image;
+// 	console.log(image.length);
 
-app.post('/upload', function(req, res) {
-	let image = req.files.image;
-	console.log(image.length);
-
-	if (image.length) {
-		for (var i=0; i < image.length; i++){
-			image[i].mv('public/photos/' + req.files.image[i].name);
-			collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
-				if(!err) {
-					console.log('Upload successful');
-				}
-			}
-		}
-	} else {
-		image.mv('public/photos/' + req.files.image.name);
-			collection.upload('public/photos/' + req.files.image.name), function(err, file) {
-				if(!err) {
-					console.log('Upload successful');
-				}
-			}
-		}
+// 	if (image.length) {
+// 		for (var i=0; i < image.length; i++){
+// 			image[i].mv('public/photos/' + req.files.image[i].name);
+// 			collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
+// 				if(!err) {
+// 					console.log('Upload successful');
+// 				}
+// 			}
+// 		}
+// 	} else {
+// 		image.mv('public/photos/' + req.files.image.name);
+// 			collection.upload('public/photos/' + req.files.image.name), function(err, file) {
+// 				if(!err) {
+// 					console.log('Upload successful');
+// 				}
+// 			}
+// 		}
 	
-	// Create a new Collection with information from form in 'collections.ejs'
-	Collection.create({title: req.body.title, description: req.body.description, images: req.files.image}, function(err, collection) {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log('Collection created successfully!');
-			res.redirect('/collections');
-		}
-	});
-});
+// 	// Create a new Collection with information from form in 'collections.ejs'
+// 	Collection.create({title: req.body.title, description: req.body.description, images: req.files.image}, function(err, collection) {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log('Collection created successfully!');
+// 			res.redirect('/collections');
+// 		}
+// 	});
+// });
 
 app.get('/collections/:id/edit', function(req, res) {
 	Collection.findById(req.params.id, function(err, collection) {
