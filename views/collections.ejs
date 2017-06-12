@@ -26,42 +26,43 @@
 		<p>Add up to any pictures you wish to view in VR</p>
 		<p>After you created your collection you can view your collection in VR in any format choosen</p>
  		<!-- <a class="btn-floating btn-large waves-effect waves-light red plus-button"><i class="material-icons">add</i></a> -->
-	<!-- Modal Trigger Button-->
+	<!-- New collection Modal Trigger Button-->
 	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create New Collection</a></div>
 
-		<div class="ajax-response">
-    <%collections.forEach(function(collection) {%>
- 			<div class="row border">
-        <div class="col s6 m6">
-          <div class="card">
-            <div class="card-image">
-							<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0].name %>">
-            </div>
-              <span class="card-title"><%=collection.title %></span>
-            <div class="card-content">
-              <p><%=collection.description %></p>
-            </div>
-            <div class="card-action">
-              <a class="view-modal" href="#modal2">View</a>
-              <a href="/collections/<%=collection._id%>/delete">Delete</a>
-              <a href="/collections/<%=collection._id%>/edit">Edit</a>
-            </div>
+	<div class="ajax-response">
+		<div class="row border">
+  <%collections.forEach(function(collection) {%>
+      <div class="col s6 m6">
+        <div class="card">
+          <div class="card-image">
+						<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0].name %>">
+          </div>
+            <span class="card-title"><%=collection.title %></span>
+          <div class="card-content">
+            <p><%=collection.description %></p>
+          </div>
+          <div class="card-action">
+            <a class="view-modal" href="#modal2">View</a>
+            <a href="/collections/<%=collection._id%>/delete">Delete</a>
+            <a href="/collections/<%=collection._id%>/edit">Edit</a>
           </div>
         </div>
+      </div>
 
 
-        <!-- Modal Structure to view collection-->
-			  <div id="modal2" class="modal modal-fixed-footer">
-			    <div class="modal-content">
-			      <h4><%=collection.title %></h4>
-			      <p><%=collection.description %></p>
-			    </div>
-			    <div class="modal-footer">
-			      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">close</a>
-			    </div>
-			  </div>
-      <% })%>
-    </div>   
+      <!-- Modal Structure to view collection-->
+		 	<div id="modal2" class="modal modal-fixed-footer">
+		    <div class="modal-content">
+		      <h4><%=collection.title %></h4>
+		      <p><%=collection.description %></p>
+		    </div>
+		    <div class="modal-footer">
+		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">close</a>
+		    </div>
+			</div>
+	  <% })%>
+  	</div>  
+ 	</div> 
       
 
   <!-- Modal Structure to create new collection-->
@@ -77,7 +78,6 @@
 			        </div>
 			        <div class="input-field col s6">
 			          <input id="description" name="description" type="text" class="validate">
-			          <input name="description" type="text" class="validate">
 			          <label for="description">Description</label>
 			        </div>
 			      </div>
@@ -104,15 +104,16 @@
 
 
 
-
+	<div>
 <!-- Footer of the page -->
-	<footer class="page-footer">
-		<div class="container">
-    	<div class="row row-footer"></div>
-  	</div>
-		<div class="footer-copyright"></div>
-  </footer>
-	
+		<footer class="page-footer">
+			<div class="container">
+	    	<div class="row row-footer"></div>
+	  	</div>
+			<div class="footer-copyright"></div>
+	  </footer>
+	</div>
+
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	<script type="text/javascript" src=js/view.js></script>
