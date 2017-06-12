@@ -118,12 +118,33 @@ app.post('/upload', function(req, res) {
 });
 
 app.get('/collections/:id/edit', function(req, res) {
-	console.log(req.params.id);
 	Collection.findById(req.params.id, function(err, collection) {
 		if(err) {
 			console.log(err);
 		} else {
 			res.render('edit', { collection: collection })
+		}
+	})
+});
+
+app.get('/collections/:id/delete', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			collection.remove( function ( err, todo ){
+			res.redirect('/collections');
+    });
+		}
+	})
+});
+
+app.get('/collections/:id/view', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('collection-view', {collection: collection})
 		}
 	})
 });
