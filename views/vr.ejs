@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Curved Images</title>
     <meta name="description" content="Curved Images - A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="aframe/dist/aframe-master.js"></script>
   </head>
   <body>
@@ -13,7 +14,7 @@
         <img id="shadow2" src="aframe/assets/img/radial-shadow-2.png">
           <%if(collection.images.length){ %>
             <%for(var i=0; i < collection.images.length; i++){ %>
-              <img id="ui<%i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>">
+              <img id="ui<%=i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>">
               <%}%>
             <%} else { %>
               <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
