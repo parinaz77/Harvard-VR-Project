@@ -63,7 +63,6 @@ const collectionSchema = new mongoose.Schema({
 const Collection = mongoose.model('Collection', collectionSchema);
 
 // Collection.create({title: 'vr-research', images: ['test_3.png','test_4.png']});
-// 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(fileUpload());
@@ -113,7 +112,7 @@ app.post('/upload', function(req, res) {
 			console.log('Collection created successfully!');
 			res.redirect('/collections');
 		}
-	});
+	})
 });
 
 app.get('/collections/:id/edit', function(req, res) {
@@ -138,7 +137,7 @@ app.put('/collections/:id', function(req, res) {
 	}
 	res.redirect('/collections');
 	console.log('Hit PUT route,', req.files)
-})
+});
 
 
 const port = process.env.PORT || 3000;
