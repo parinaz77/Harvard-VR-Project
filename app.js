@@ -7,8 +7,8 @@ var methodOverride = require('method-override');
 
 var gcloud = require('google-cloud');
 var gcs = gcloud.storage({
-  projectId: 'harvard-vr-169919'
-  // keyFilename: '/path/to/keyfile.json'
+  projectId: 'harvard-vr-169919',
+  keyFilename: './harvard-vr-93a42650c36e.json'
 });
 var bucket = gcs.bucket('harvard-vr')
 
