@@ -64,5 +64,9 @@ p:before { content: "\00a0 "; }
 }
 
 nav {
-	background-color: gray!important;
+	background-color: #26a69a !important;
+}
+
+.page-footer{
+	background-color: #26a69a !important;
 }
