@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Collection = require('../models/collection');
+// var Collection = require('../models/collection');
 
 router.get('/', function(req, res) {
 	res.render('index');
@@ -11,7 +11,7 @@ router.get('/collections/:id/vr', function(req, res) {
 		if(err) {
 			console.log(err);
 		} else {
-			res.render('vr', {collection: collection})
+			// res.render('vr', {collection: collection})
 		}
 	})
 });

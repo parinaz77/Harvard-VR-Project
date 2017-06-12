@@ -32,7 +32,7 @@
 	<div class="ajax-response">
 		<div class="row border">
   	<%collections.forEach(function(collection) {%>
-      <div class="col s6 m6">
+      <div class="col s6 m4">
         <div class="card">
           <div class="card-image">
 						<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0].name %>">
@@ -56,6 +56,21 @@
 		    <div class="modal-content">
 		      <h4><%=collection.title %></h4>
 		      <p><%=collection.description %></p>
+		    </div>
+				
+				<%if(collection.images.length){ %>
+					<%for(var i=0; i < collection.images.length; i++){ %>
+						<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>">
+						<%}%>
+					<%} else { %>
+						<img src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
+					<%}%>
+				
+
+
+
+		    <!-- <img src="http://storage.googleapis.com/harvard-vr/<%=collection.images[0].name %>"> -->
+		    <div class="card-action">
 		    </div>
 		    <div class="modal-footer">
 		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">close</a>
