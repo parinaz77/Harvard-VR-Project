@@ -10,7 +10,7 @@ var gcs = gcloud.storage({
   projectId: 'harvard-vr-169919'
   // keyFilename: '/path/to/keyfile.json'
 });
-var bucket = gcs.bucket('harvard-vr')
+// var bucket = gcs.bucket('harvard-vr')
 
 const app = express();
 const indexRoutes = require('./routes/index');
