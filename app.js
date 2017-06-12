@@ -55,8 +55,6 @@ app.get('/collections', function(req, res) {
 			console.log(err);
 		} else {
 			console.log('collections route', collections);
-			// res.render('collections', {collection: collections[0]})
-			// console.log(collections)
 			res.render('collections', {collections: collections})
 		}
 	});
@@ -72,11 +70,7 @@ app.get('/test', function(req, res) {
 });
 
 app.post('/upload', function(req, res) {
-	// console.log(req.files)
-	// console.log('public/photos/' + req.files.image.name);
 	let image = req.files.image;
-	// console.log(1, image)
-	// console.log(2, req.files)
 	for (var i=0; i < image.length; i++){
 		image[i].mv('public/photos/' + req.files.image[i].name);
 		collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
@@ -97,12 +91,33 @@ app.post('/upload', function(req, res) {
 });
 
 app.get('/collections/:id/edit', function(req, res) {
-	console.log(req.params.id);
 	Collection.findById(req.params.id, function(err, collection) {
 		if(err) {
 			console.log(err);
 		} else {
 			res.render('edit', { collection: collection })
+		}
+	})
+});
+
+app.get('/collections/:id/delete', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			collection.remove( function ( err, todo ){
+			res.redirect('/collections');
+    });
+		}
+	})
+});
+
+app.get('/collections/:id/view', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('collection-view', {collection: collection})
 		}
 	})
 });
