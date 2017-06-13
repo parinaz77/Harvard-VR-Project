@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fileUpload = require('express-fileupload');
 var gcloud = require('google-cloud');
+var request = require('request');
 var gcs = gcloud.storage({
   projectId: 'harvard-vr-169919',
   keyFilename: 'harvard-vr-93a42650c36e.json'
@@ -115,6 +116,7 @@ router.get('/collections/:id/vr', function(req, res) {
 });
 
 router.get('/test', function(req,res) {
+
 	res.render('test');
 });
 
