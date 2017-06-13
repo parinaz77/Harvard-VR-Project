@@ -11,14 +11,14 @@
   <body>
     <a-scene>
       <a-assets>
-        <img id="mozvr" src="http://storage.googleapis.com/harvard-vr/mozvr.png">
-        <img id="shadow2" src="http://storage.googleapis.com/harvard-vr/radial-shadow-2.png">
+        <img id="mozvr" src="http://storage.googleapis.com/harvard-vr/mozvr.png" crossorigin="anonymous" >
+        <img id="shadow2" src="http://storage.googleapis.com/harvard-vr/radial-shadow-2.png" crossorigin="anonymous">
         <%if(collection.images.length){ %>
             <%for(var i=0; i < collection.images.length; i++){ %>
-              <img id="ui<%=i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>">
+              <img id="ui<%=i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>" crossorigin="anonymous">
               <%}%>
             <%} else { %>
-              <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
+              <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>" crossorigin="anonymous">
             <%}%>
       </a-assets>
 
