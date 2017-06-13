@@ -110,7 +110,18 @@ router.get('/collections/:id/vr', function(req, res) {
 		if(err) {
 			console.log(err);
 		} else {
-			// res.render('vr', {collection: collection})
+			res.render('vr', {collection: collection})
+			console.log(collection);
+		}
+	})
+});
+
+router.get('/collections/:id/vr_slideshow', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('vr_slideshow', {collection: collection})
 			console.log(collection);
 		}
 	})
