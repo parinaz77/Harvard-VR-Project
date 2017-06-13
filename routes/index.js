@@ -127,6 +127,16 @@ router.get('/collections/:id/vr_slideshow', function(req, res) {
 	})
 });
 
+router.get('/collections/:id/vr2', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('vr2', {collection: collection})
+		}
+	})
+});
+
 router.get('/test', function(req,res) {
 
 	res.render('test');

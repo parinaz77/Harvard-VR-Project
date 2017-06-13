@@ -6,7 +6,7 @@
     <meta name="description" content="Curved Images - A-Frame">
     <!-- <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://aframe.io/releases/0.5.0/aframe-master.js"></script> -->
-    <script src="dist/aframe-master.js"></script>
+    <script src="https://rawgit.com/aframevr/aframe/f850c2f/dist/aframe-master.min.js"></script>
     <!-- <script src="dist/aframe-master.js"></script> -->
   </head>
   <body>
@@ -27,14 +27,15 @@
                      rotation="0 80 0" position="0 0.7 0" scale="0.6 0.6 0.6"></a-curvedimage>
       <a-curvedimage src="#ui2" radius="5.7" theta-length="70" height="3.02"
                      rotation="0 -130 0" scale="0.8 0.8 0.8"></a-curvedimage>
-        <img id="mozvr" src="http://storage.googleapis.com/harvard-vr/mozvr.png">
-        <img id="shadow2" src="http://storage.googleapis.com/harvard-vr/radial-shadow-2.png">
+       
+        <img id="mozvr" src="http://storage.googleapis.com/harvard-vr/mozvr.png" crossorigin="anonymous" >
+        <img id="shadow2" src="http://storage.googleapis.com/harvard-vr/radial-shadow-2.png" crossorigin="anonymous">
         <%if(collection.images.length){ %>
             <%for(var i=0; i < collection.images.length; i++){ %>
-              <img id="ui<%=i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>">
+              <img id="ui<%=i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>" crossorigin="anonymous">
               <%}%>
             <%} else { %>
-              <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>">
+              <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>" crossorigin="anonymous">
             <%}%>
       </a-assets>
 
