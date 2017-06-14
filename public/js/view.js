@@ -41,5 +41,5 @@ $(document).ready(function() {
     '</div>' )
 
   $('.footer-copyright').html(        
-    '© 2017 Copyright Text' )
+    '  © 2017 WebVision, All rights reserved.' )
 })
