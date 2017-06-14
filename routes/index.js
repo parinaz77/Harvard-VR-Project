@@ -104,22 +104,32 @@ router.get('/', function(req, res) {
 	res.render('index');
 });
 
-router.get('/collections/:id/vr', function(req, res) {
+router.get('/collections/:id/curve-vr', function(req, res) {
 	Collection.findById(req.params.id, function(err, collection) {
 		if(err) {
 			console.log(err);
 		} else {
-			res.render('vr', {collection: collection})
+			res.render('curve-vr', {collection: collection})
 		}
 	})
 });
 
-router.get('/collections/:id/vr2', function(req, res) {
+router.get('/collections/:id/regular-vr', function(req, res) {
 	Collection.findById(req.params.id, function(err, collection) {
 		if(err) {
 			console.log(err);
 		} else {
-			res.render('vr3', {collection: collection})
+			res.render('regular-vr', {collection: collection})
+		}
+	})
+});
+
+router.get('/collections/:id/cube-vr', function(req, res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('cube-vr', {collection: collection})
 		}
 	})
 });
