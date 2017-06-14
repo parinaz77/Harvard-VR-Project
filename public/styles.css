@@ -27,7 +27,7 @@
  }
 
 p {
-	text-align: center;
+	/*text-align: center;*/
 }
 
 blockquote{
@@ -83,4 +83,23 @@ nav {
 	width: 250px !important;
 	top: 34px !important;
 }
+
+.add-space{
+	padding-bottom: 100px;
+}
+
+p{
+	color:gray !important;
+}
+
+.link {
+	color:#039be5 !important;
+}
+
+h4{
+	color:#b2dfdb !important;
+}
+
+.color-white {
+	color:white !important;
 }

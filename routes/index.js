@@ -119,7 +119,7 @@ router.get('/collections/:id/vr2', function(req, res) {
 		if(err) {
 			console.log(err);
 		} else {
-			res.render('vr2', {collection: collection})
+			res.render('vr3', {collection: collection})
 		}
 	})
 });
