@@ -26,7 +26,7 @@ router.get('/collections', function(req, res) {
 
 router.post('/upload', function(req, res) {
 	let image = req.files.image;
-	console.log(image.length);
+	console.log(image.length, req.files);
 
 	if (image.length) {
 		for (var i=0; i < image.length; i++){
@@ -40,7 +40,8 @@ router.post('/upload', function(req, res) {
 	} else {
 		image.mv('public/photos/' + req.files.image.name);
 			collection.upload('public/photos/' + req.files.image.name), function(err, file) {
-				if(!err) {
+				console.log(file);
+				if(file) {
 					console.log('Upload successful');
 				}
 			}
