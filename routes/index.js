@@ -9,7 +9,6 @@ var gcs = gcloud.storage({
 });
 var bucket = gcs.bucket('harvard-vr');
 var collection = gcs.bucket('harvard-vr');
-var bucket2 = gcs.bucket('vr-bucket')
 var Collection = require('../models/collection');
 
 
@@ -31,7 +30,7 @@ router.post('/upload', function(req, res) {
 	if (image.length) {
 		for (var i=0; i < image.length; i++){
 			image[i].mv('public/photos/' + req.files.image[i].name);
-			bucket2.upload('public/photos/' + req.files.image[i].name), function(err, file) {
+			collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
 				if(!err) {
 					console.log('Upload successful');
 				}
@@ -39,7 +38,7 @@ router.post('/upload', function(req, res) {
 		}
 	} else {
 		image.mv('public/photos/' + req.files.image.name);
-			bucket2.upload('public/photos/' + req.files.image.name), function(err, file) {
+			collection.upload('public/photos/' + req.files.image.name), function(err, file) {
 				if(!err) {
 					console.log('Upload successful');
 				}
