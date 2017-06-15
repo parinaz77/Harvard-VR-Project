@@ -30,8 +30,8 @@ router.post('/upload', function(req, res) {
 
 	if (image.length) {
 		for (var i=0; i < image.length; i++){
-			image[i].mv('public/photos/' + req.files.image[i].name);
-			collection.upload('public/photos/' + req.files.image[i].name), function(err, file) {
+			image[i].mv('uploads/' + req.files.image[i].name);
+			collection.upload('uploads/' + req.files.image[i].name), function(err, file) {
 				if(!err) {
 					console.log('Upload successful');
 				}
