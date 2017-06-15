@@ -112,7 +112,7 @@ router.get('/collections/:id/curve-vr', function(req, res) {
 		if(err) {
 			console.log(err);
 		} else {
-			res.render('vr', {collection: collection})
+			res.render('curve-vr', {collection: collection})
 			console.log(collection);
 		}
 	})
