@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 var fileUpload = require('express-fileupload');
 var gcloud = require('google-cloud');
+var storage = require('@google-cloud/storage');
 var request = require('request');
-var gcs = gcloud.storage({
+var gcs = storage({
   projectId: 'harvard-vr-169919',
   keyFilename: 'harvard-vr-93a42650c36e.json'
 });
