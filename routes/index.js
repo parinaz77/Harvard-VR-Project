@@ -6,7 +6,7 @@ var storage = require('@google-cloud/storage');
 var request = require('request');
 var gcs = storage({
   projectId: 'harvard-vr-169919',
-  keyFilename: 'harvard-vr-93a42650c36e.json'
+  keyFilename: 'harvard-vr-3890e120368b.json'
 });
 var bucket = gcs.bucket('harvard-vr');
 var collection = gcs.bucket('harvard-vr');

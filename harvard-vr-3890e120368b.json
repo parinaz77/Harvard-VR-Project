@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "harvard-vr-169919",
+  "private_key_id": "3890e120368bfaf710255a42d766c2c605e71977",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDIwuPUK7bhAsLY\n/sEg99DLfkFb0DY1P3cK3X2PhAMsnqZtPCdqw1uVR6Adkn3PjLSSULPq4H17SqeA\nNQ1zbZMUf7zKeN4oJd/bd+JyjihHGuiZJPgAzN3FgK0I3nLf2mIZa8+apyRiVITS\nK91g5tv9EakFIEl3pzW/TyBKqHNqEo6gPkyjTJden13RYGgLKbMNsTMl6ag0XPCO\nR3bxJzT/YQJR0zPHuYh83k6jmqblA1gjdq+kgIVTjR4J5UOUJny9+dxgmSN9g7Tr\nwqGXopS2AFhPSPEMsYALDlcm+wL1+vjpUN9a18dBLkqzl79uo7xbfZtkMvbE/69q\n4PpxSCofAgMBAAECggEANmc1tPe5oaUNZx8197igAJzwmjBEmE5f9HZMAbmc4JkH\ncX+FEPXqmfvkZE8fv8AZ6LJs5v+5kVEMLf5ybC6r1ji9UMLLNOb6kC8fErr6KDaf\nBG0TtafOiyhQ+5/IUmgMAGaKRhb4EZtkuM2BOrKkt6HzAvwaXI3Xz0Vic0jNqdbt\nK1zhHngnLIqGZlDNyLIRa8eLj5+A0UABKr0EVjHPuB45gjprO16HmRV6mwFI9NEd\nUVYeyoBDqnaKpNip6pZf0MX+RCv8qU5PF1DiyDJGqcmA2orabw64z6mALhgqmkGj\nPseNvew88+uyfuZCKOkcaMPDR8FLdNN/MrXIH0zR7QKBgQD30KALumwGBGpf9/pf\nebP19jA1be8Uq2g5RSlCsUNtiP+SlBJ+2kwFQfy7ZmBfcl49JQTb3Zri26KhrpKJ\nIKbGASROy0YwNWVMei43KGXL172L3TOvLdLBsxC18Q/csqBslzCSxUFQyRffogB7\nNZ5Lz5C6W/vHSDVVHTrRTNJoIwKBgQDPZGhBgpQaMICGrycrQ8JLSCPUlWO4B5e6\nJpH5w/4D7wEv2SRXsgjytmwZTe+eOxT9yHKW4xHqIOBUOGRAwfRd/ZwlPT7uN8eu\nxZNC24GeD/8ywulBpCgCPTt6kgCs10ofVrheNO/JNw9mQLWSow2B3/9M7xi+3NvS\nupxpWEg31QKBgQD0jTsDl+q2XXEkV7EKuy1u0o5si5peCXEG40t+dzQVShb77Yf7\nCy3uGlpwDO2aA2EgcgHDf4Mz0I9DguU00bYCvGm6IDuZo3fd6szkvccHTFXPSnGQ\ntGXBpRYelk+S+ev6fZD/pg14zZnzpQlYjWczZRhr8A4dcRLAdeHvXiJdhQKBgQCt\nNl8c18J6XSf7VS6Ro/YSih3i3yJ6AV1ny+7/fAIbpvKG1ATWeYufq1x9heorbY0K\nqO+LtfqwYOT7cl3I+DTwi3Buaci1jUDpZ3qmzE5lhVbPPpsyh7gipqGWrXqC4Qy3\nP+acR/o9RA9Ih6Me5a/SWRMRXmB8iFnQlqssEN/AQQKBgC/j2Wkw9XkyKx5iyYj+\ndEsbFaVtZG9zstYMY8Kpx4IDU2Zjay2pqgOYxvd9UE0Egqk6q0/8mKpMe4QXTBi9\nELUYaK2l/XCRyoHVXP/LuvZamERMMf2mwyyvP4xFyqhftkjb5dPoyDmJWeWyPYzK\nO9MxzuM4bS5OlkYnGU6lPQfq\n-----END PRIVATE KEY-----\n",
+  "client_email": "harvard-vr-169919@appspot.gserviceaccount.com",
+  "client_id": "104710462969362293623",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/harvard-vr-169919%40appspot.gserviceaccount.com"
+}

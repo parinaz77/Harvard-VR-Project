@@ -1,8 +1,8 @@
 [
     {
-      "origin": ["https://harvard-vr-1.herokuapp.com", "http://localhost:3000"],
+      "origin": ["https://harvard-vr-1.herokuapp.com"],
       "responseHeader": ["Content-Type"],
-      "method": ["GET", "HEAD", "DELETE", "POST"],
+      "method": ["GET", "HEAD", "DELETE", "POST", "PUT"],
       "maxAgeSeconds": 3600
     }
 ]
