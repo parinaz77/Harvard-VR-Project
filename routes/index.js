@@ -38,8 +38,8 @@ router.post('/upload', function(req, res) {
 			}
 		}
 	} else {
-		image.mv('public/photos/' + req.files.image.name);
-			collection.upload('public/photos/' + req.files.image.name), function(err, file) {
+		image.mv('uploads/' + req.files.image.name);
+			collection.upload('uploads/' + req.files.image.name), function(err, file) {
 				console.log(file);
 				if(file) {
 					console.log('Upload successful');
