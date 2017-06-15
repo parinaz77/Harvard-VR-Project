@@ -137,8 +137,11 @@ router.get('/collections/:id/vr2', function(req, res) {
 	})
 });
 
-router.get('/test', function(req,res) {
+router.get('/slideshow_test/:id', function(req, res) {
+	res.render('slideshow_test');
+});
 
+router.get('/test', function(req,res) {
 	res.render('test');
 });
 
