@@ -10,10 +10,18 @@
  	margin-bottom: 50px;
  }
 
+ #new-collection-button {
+ 	border-top: 2px solid grey;
+ }
+
  #partners-desc {
  	text-align: center;
  }
 
+ #collections-page-title {
+ 	text-align: center;
+ 	border-bottom: 2px solid grey;
+ }
  .section-header {
  	border-bottom: 2px solid grey;
  	width: 50%;
@@ -146,6 +154,10 @@ h4{
 .delete-loc{
 	text-align: right;
 	padding-right: 10px;
+}
+
+.card-title {
+	text-align: center;
 }
 
 

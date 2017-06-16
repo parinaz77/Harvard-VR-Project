@@ -27,7 +27,7 @@ $(document).ready(function() {
 	$('.row-footer').html(
     '<div class="col l6 s12">'+
       '<h5 class="white-text">Contribute to WebVision</h5>'+
-      '<p class="grey-text text-lighten-4">WebVision is an open-source project, so if you are interested in contributing you can check out the project repository <a class="grey-text text-lighten-3" href="https://github.com/parinaz77/Harvard-VR-Project"><span style="text-decoration: underline;">here</span></a></p>'+
+      '<p class="grey-text text-lighten-4">WebVision is an open-source project, so if you are interested in contributing you can check out the project repository <a class="grey-text text-lighten-3" href="https://github.com/parinaz77/Harvard-VR-Project"><span style="text-decoration: underline;">here.</span></a></p>'+
     '</div>'+
     '<div class="col l4 offset-l2 s12">'+
       '<h5 class="white-text">Contributors</h5>'+
