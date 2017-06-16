@@ -15,7 +15,8 @@
  }
 
  .section-header {
- 	border-bottom: 3px solid grey;
+ 	border-bottom: 2px solid grey;
+ 	width: 50%;
  }
 
  #overview {
@@ -145,4 +146,13 @@ h4{
 .delete-loc{
 	text-align: right;
 	padding-right: 10px;
+}
+
+
+.gif-p {
+	float: left;
+}
+
+.gif-r {
+	float: right;
 }

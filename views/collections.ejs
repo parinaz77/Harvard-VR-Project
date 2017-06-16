@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Harvard VR Project</title>
+	<title>WebVision</title>
 	<link rel="stylesheet" href="styles.css">
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="icon2.png">
 
 </head>
 <body>
@@ -21,12 +22,12 @@
 	  </div>
 	</nav>
 <div class="add-space"></div>
-	<div class='container center'>
+	<div class='container'>
 		<p>WebVision is an application that allows you to upload collections of images and dispalys them in a variety of different VR views from your browser</p>
 		<p>Collections can be viewed on any tethered or untethered HMDs including HTC Vive, Oculus Rift and Cardboard devices </p>
 		<br>
 		<br>
-		<img src="images/chrome.pnh.png" height="70" width="300"> <img src="images/carmel.png" height="70" width="300"><img src="images/firefox.png" height="65" width="300">
+		<img src="images/chrome.pnh.png" height="60" width="300"> <img src="images/carmel.png" height="60" width="300"><img src="images/firefox.png" height="55" width="300">
 		<p>Web VR is supported on most modern browsers. If you are using a mobile device, such as an Android or iPhone, please note that displaying collections may not work on some browsers. To ensure that your collections are displayed appropriately in VR when using a mobile device, you can use Google Chrome</p>
 		<p>For more information on which browsers are supported, visit this <a target="_blank" href="https://webvr.rocks/">link</a></p>
 		<br>
@@ -61,7 +62,7 @@
           <div class="delete-loc"><a href="/collections/<%=collection._id%>/delete">Delete</a></div>
           <div class="card-action">
             <a href="/collections/<%=collection._id%>/curve-vr">VR Curve</a>
-            <a href="/collections/<%=collection._id%>/regular-vr">VR regular</a>
+            <a href="/collections/<%=collection._id%>/regular-vr">VR Pan</a>
             <a href="/collections/<%=collection._id%>/cube-vr">VR Cube</a>
             <!-- <a href="/collections/<%=collection._id%>/edit">Edit</a> -->
           </div>
