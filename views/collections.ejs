@@ -62,11 +62,11 @@
             <span class="card-title"><%=collection.title %></span>
             <p class="p-desc"><%=collection.description %></p>
           </div>
-          <div class="delete-loc"><a href="/collections/<%=collection._id%>/delete">Delete</a></div>
-          <div class="card-action">
-            <a href="/collections/<%=collection._id%>/curve-vr">VR Curve</a>
-            <a href="/collections/<%=collection._id%>/regular-vr">VR Pan</a>
-            <a href="/collections/<%=collection._id%>/cube-vr">VR Cube</a>
+          <div class="delete-loc"><a href="/collections/<%=collection._id%>/delete" class="delete-links">Delete</a></div>
+          <div class="card-action" id="video-card-action">
+            <a class="collection-links" href="/collections/<%=collection._id%>/curve-vr">VR Curve</a>
+            <a class="collection-links" href="/collections/<%=collection._id%>/regular-vr">VR Pan</a>
+            <a class="collection-links" href="/collections/<%=collection._id%>/cube-vr">VR Cube</a>
             <!-- <a href="/collections/<%=collection._id%>/edit">Edit</a> -->
           </div>
           <div class="card-action">

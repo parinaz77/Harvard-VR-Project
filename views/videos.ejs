@@ -18,12 +18,12 @@
     <a href="/" class="brand-logo">WebVision</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="/">Home</a></li>
-      <li><a href="/videos">Videos</a></li>
+      <li><a href="/collections">Collections</a></li>
     </ul>
 	  </div>
 	</nav>
 	<div class="add-space"></div>
-		<h1 id="videos-page-title">videos</h1>
+		<h1 id="videos-page-title">Videos</h1>
 
 	<div class='container'>
 		<p>WebVision is an application that allows you to upload videos of images and displays them in a variety of different VR views from your browser.</p>
@@ -52,22 +52,22 @@
           <div class="carousel">
 					<%if(video.video.length){ %>
 						<%for(var i=0; i < video.video.length; i++){ %>
-				    	<a class="carousel-item" href="#one!"><img src="http://storage.googleapis.com/harvard-vr/<%=video.video[i].name %>"></a>
+				    	<a class="carousel-item" href="#one!"><img src="http://www.namasteveyoga.com/wp-content/plugins/video-thumbnails/default.jpg"></a>
 							<%}%>
 	 			 	</div>
 						<%} else { %>
-							<img src="http://storage.googleapis.com/harvard-vr/<%=video.video[0] %>">
+							<img src="http://www.namasteveyoga.com/wp-content/plugins/video-thumbnails/default.jpg">
 						<%}%>
           <div class="card-content">
             <span class="card-title"><%=video.title %></span>
             <p class="p-desc"><%=video.description %></p>
           </div>
-          <div class="delete-loc"><a href="/videos/<%=video._id%>/delete">Delete</a></div>
-          <div class="card-action">
-            <a href="/videos/<%=video._id%>/curve-vr">VR Curve</a>
+          <div class="delete-loc"><a href="/videos/<%=video._id%>/delete" class="delete-links">Delete</a></div>
+          <div class="card-action" id="video-card-action">
+            <!-- <a href="/videos/<%=video._id%>/curve-vr">VR Curve</a>
             <a href="/videos/<%=video._id%>/regular-vr">VR Pan</a>
-            <a href="/videos/<%=video._id%>/cube-vr">VR Cube</a>
-            <a href="/videos/<%= video._id%>/vr_video">VR Video</a>
+            <a href="/videos/<%=video._id%>/cube-vr">VR Cube</a> -->
+            <a class="collection-links" href="/videos/<%= video._id%>/vr_video">VR Video</a>
             <!-- <a href="/videos/<%=video._id%>/edit">Edit</a> -->
           </div>
           <div class="card-action">

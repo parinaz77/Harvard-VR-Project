@@ -10,6 +10,10 @@
  	margin-bottom: 50px;
  }
 
+ #video-card-action {
+ 	text-align: center;
+ }
+
  #new-collection-button {
  	border-top: 2px solid grey;
  }
@@ -22,6 +26,12 @@
  	text-align: center;
  	border-bottom: 2px solid grey;
  }
+
+ #videos-page-title {
+ 	text-align: center;
+ 	border-bottom: 2px solid grey;
+ }
+
  .section-header {
  	border-bottom: 2px solid grey;
  	width: 50%;
@@ -154,6 +164,14 @@ h4{
 .delete-loc{
 	text-align: right;
 	padding-right: 10px;
+}
+
+.delete-links {
+	color: red;
+}
+
+.collection-links {
+	color: #26a69a !important;
 }
 
 .card-title {
