@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>A-Frame Video Shader - Basic</title>
+     <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-video-shader/master/dist/aframe-vid-shader.min.js"></script>
+    <!-- <script src="../build.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../common.css"/> -->
+  </head>
+  <body>
+    <a-scene>
+
+      <!-- assets -->
+      <a-assets>
+      <%if(video.video.length) {%>   
+        <video id="bbb" src="http://storage.googleapis.com/harvard-vr/<%=video.video[0]%>"></video>
+      <%}%>
+      </a-assets>
+
+      <!-- bbb -->
+      <a-entity id="video" geometry="primitive:box;width:4;height:2.15;depth:2;" rotation="30 30 0" position="0 2 0" material="shader:video;src:#bbb;"></a-entity>
+
+      <!-- sky -->
+      <a-sky color="pink"></a-sky>
+      
+    </a-scene>
+    
+    <div class="buttons novr">
+      <a href="javascript:togglePlayback()">toggle playback</a>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="spacer2"></div>
+
+    <!-- <script src="../common.js"></script> -->
+    <script type="text/javascript">
+
+    function togglePlayback () {
+      var el = document.getElementById('video')
+      var material = Object.assign({}, el.getAttribute('material'))
+      material.pause = !material.pause
+      el.setAttribute('material', material)
+    }
+    </script>
+
+  </body>
+</html>
+

@@ -11,6 +11,10 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
     <script src="https://rawgit.com/aframevr/aframe/f850c2f/dist/aframe-master.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^3.0.0/dist/aframe-event-set-component.min.js"></script> 
+
     <!-- <script src="dist/aframe-master.js"></script> -->
     <script>
       AFRAME.registerComponent('slideshow', {
@@ -39,13 +43,15 @@
             <%}%>
       </a-assets>
 
+      <!-- <a-entity particle-system="preset: snow; particleCount: 10000"></a-entity>
+      <a-entity particle-system="preset: default; color: #515; particleCount: 1000" position="0 0 -5"></a-entity> -->
+
       <%if(collection.images.length){ %>
         <%var p = 0%>
         <%var r = 0%>
         <%for(var i=0; i < collection.images.length; i++){ %>
-          <a-curvedimage src="#ui<%=i%>" radius="5.7" theta-length="50" height="4"
-                     rotation="0 <%=r%> 0" position="<%=p%> <%=p%> <%=p%>"></a-curvedimage>
-          <%r += 60 %>
+          <a-curvedimage  event-set__1="_event: click; material.color: red; scale: 2 2 2" src="#ui<%=i%>" radius="5.7" theta-length="50" height="4" rotation="0 <%=r%> 0" position="<%=p%> <%=p%> <%=p%>"></a-curvedimage>
+            <%r += 60 %>
         <%}%>
           <%} else { %>
             <a-curvedimage src="#ui1" radius="5.7" theta-length="180" height="9"
@@ -53,7 +59,13 @@
           <%}%>
 
              <a-curvedimage src="#ui1" radius="5.7" theta-length="50" height="4"
-                     rotation="0 0 0" position="0 0 0" ></a-curvedimage>
+                     rotation="0 0 0" position="0 0 0" 
+                     vent-set__down="_event: mousedown; scale: 1.2 1.2 1.2"
+                event-set__up="_event: mouseup; scale: 1 1 1"
+                event-set__leave="_event: mouseleave; scale: 1 1 1">
+                       <a-text id="cylinderText" value="This is a cylinder" align="center" color="#FFF" visible="false" position="0 -0.55 0.55"
+                geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>
+                     </a-curvedimage>
             <a-curvedimage src="#ui2" radius="5.7" theta-length="50" height="4"
                            rotation="0 60 0" position="0 0 0" ></a-curvedimage>
             <a-curvedimage src="#ui3" radius="5.7" theta-length="50" height="4"
@@ -66,9 +78,11 @@
                           rotation="0 300 0" position="0 0 0"></a-curvedimage> -->
 
       <a-image position="0 -5 0" src="#shadow2" rotation="-90 0 0" scale="6 6 6"></a-image>
-      <a-sky color="#fff"></a-sky>
+      <!-- <a-sky color="#fff"></a-sky> -->
       <a-entity position="0 0 1.5">
-        <a-camera></a-camera>
+        <a-camera>
+          <a-cursor></a-cursor>
+        </a-camera>
       </a-entity>
     </a-scene>
   </body>

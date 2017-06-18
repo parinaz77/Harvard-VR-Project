@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebVision</title>
+	<link rel="stylesheet" href="styles.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="icon2.png">
+
+</head>
+<body>
+	<nav>
+	  <div class="nav-col">
+    <a href="/" class="brand-logo">WebVision</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Home</a></li>
+      <li><a href="/videos">Videos</a></li>
+    </ul>
+	  </div>
+	</nav>
+	<div class="add-space"></div>
+		<h1 id="videos-page-title">videos</h1>
+
+	<div class='container'>
+		<p>WebVision is an application that allows you to upload videos of images and displays them in a variety of different VR views from your browser.</p>
+		<p>videos can be viewed on any tethered or untethered HMDs including HTC Vive, Oculus Rift and Cardboard devices. </p>
+		<br>
+		<br>
+		<img src="images/chrome.pnh.png" height="60" width="300"> <img src="images/carmel.png" height="60" width="300"><img src="images/firefox.png" height="55" width="300">
+		<p>Web VR is supported on most modern browsers. If you are using a mobile device, such as an Android or iPhone, please note that displaying videos may not work on some browsers. To ensure that your videos are displayed appropriately in VR when using a mobile device, you can use Google Chrome.</p>
+		<p>For more information on which browsers are supported, please visit this <a target="_blank" href="https://webvr.rocks/">link</a>.</p>
+		<br>
+		<br>
+
+		<p>You can create new videos below and add up to any number of pictures you wish to view in VR.</p>
+		<p>After creating your video, you will have the option to choose which format you wish to view your images in (i.e. Curved vs Normal View).</p>
+		<br>
+	<!-- New video Modal Trigger Button-->
+	<div class="center"><a class="waves-effect waves-light btn" href="#modal1">Create New video</a></div>
+	<br>
+	<br>
+
+	<div class="ajax-response">
+		<div class="row border">
+  	<%videos.forEach(function(video) {%>
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="carousel">
+					<%if(video.video.length){ %>
+						<%for(var i=0; i < video.video.length; i++){ %>
+				    	<a class="carousel-item" href="#one!"><img src="http://storage.googleapis.com/harvard-vr/<%=video.video[i].name %>"></a>
+							<%}%>
+	 			 	</div>
+						<%} else { %>
+							<img src="http://storage.googleapis.com/harvard-vr/<%=video.video[0] %>">
+						<%}%>
+          <div class="card-content">
+            <span class="card-title"><%=video.title %></span>
+            <p class="p-desc"><%=video.description %></p>
+          </div>
+          <div class="delete-loc"><a href="/videos/<%=video._id%>/delete">Delete</a></div>
+          <div class="card-action">
+            <a href="/videos/<%=video._id%>/curve-vr">VR Curve</a>
+            <a href="/videos/<%=video._id%>/regular-vr">VR Pan</a>
+            <a href="/videos/<%=video._id%>/cube-vr">VR Cube</a>
+            <a href="/videos/<%= video._id%>/vr_video">VR Video</a>
+            <!-- <a href="/videos/<%=video._id%>/edit">Edit</a> -->
+          </div>
+          <div class="card-action">
+          	
+          </div>
+        </div>
+      </div>
+	  <% })%>
+  	</div>  
+ 	</div> 
+      
+
+  <!-- Modal Structure to create new video-->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Upload a new video</h4>
+			  <form class="col s12" method="POST" action="/upload_video" enctype="multipart/form-data">
+					<div class="row">
+			      <div class="row">
+			        <div class="input-field col s6">
+			          <input name="title" type="text" class="validate">
+			          <label for="title">Title</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <input id="description" name="description" type="text" class="validate">
+			          <label for="description">Description</label>
+			        </div>
+			      </div>
+			  	</div>
+			    <div class="file-field input-field">
+			      <div class="btn">
+			        <span>File</span>
+			        <input type="file" multiple name="image">
+			      </div>
+			      <div class="file-path-wrapper">
+			        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+			      </div>
+			    </div>
+			    <div class="modal-footer">
+			    	<input class="waves-effect waves-light btn-large start-button submit-ajax" type="submit" value="Save">
+			    </div>
+			    <div class="load-bar"></div>				  
+				</form>
+	    </div>
+	  </div>
+	</div>
+
+
+<!-- Footer of the page -->
+		<footer class="page-footer">
+			<div class="container">
+	    	<div class="row row-footer"></div>
+	  	</div>
+			<div class="footer-copyright"><div id="copyright">© 2017 WebVision, All rights reserved.</div></div>
+	  </footer>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src=js/view.js></script>
+	
+
+</body>
+</html>

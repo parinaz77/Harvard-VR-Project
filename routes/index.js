@@ -11,6 +11,7 @@ var gcs = storage({
 var bucket = gcs.bucket('harvard-vr');
 var collection = gcs.bucket('harvard-vr');
 var Collection = require('../models/collection');
+var Video = require('../models/video');
 
 
 router.get('/collections', function(req, res) {
@@ -156,6 +157,65 @@ router.get('/slideshow_test/:id', function(req, res) {
 
 router.get('/test', function(req,res) {
 	res.render('test');
+});
+
+router.get('/vr_video', function(req, res) {
+	res.render('vr_video');
+});
+
+router.post('/upload_video', function(req, res) {
+	let image = req.files.image;
+	console.log(image.length, req.files);
+
+	if (image.length) {
+		for (var i=0; i < image.length; i++){
+			image[i].mv('uploads/' + req.files.image[i].name);
+			collection.upload('uploads/' + req.files.image[i].name), function(err, file) {
+				if(!err) {
+					console.log('Upload successful');
+				}
+			}
+		}
+	} else {
+		image.mv('uploads/' + req.files.image.name);
+			collection.upload('uploads/' + req.files.image.name), function(err, file) {
+				console.log(file);
+				if(file) {
+					console.log('Upload successful');
+				}
+			}
+		}
+	
+	// Create a new Collection with information from form in 'collections.ejs'
+	Video.create({title: req.body.title, description: req.body.description, video: req.files.image.name}, function(err, video) {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log('Video created successfully!');
+			res.redirect('/videos');
+		}
+	});
+});
+
+router.get('/videos', function(req, res) {
+	Video.find({}, function(err, videos) {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log('videos route', videos);
+			res.render('videos', {videos: videos})
+		}
+	});
+});
+
+router.get('/videos/:id/vr_video', function(req, res) {
+	Video.findById(req.params.id, function(err, video) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('vr_video', {video: video})
+		}
+	})
 });
 
 module.exports = router;
