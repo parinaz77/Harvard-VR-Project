@@ -155,8 +155,14 @@ router.get('/slideshow_test/:id', function(req, res) {
 	res.render('slideshow_test');
 });
 
-router.get('/test', function(req,res) {
-	res.render('test');
+router.get('/collections/:id/flicker', function(req,res) {
+	Collection.findById(req.params.id, function(err, collection) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('flicker', {collection: collection})
+		}
+	})
 });
 
 router.get('/vr_video', function(req, res) {
