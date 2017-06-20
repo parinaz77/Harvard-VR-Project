@@ -218,4 +218,14 @@ router.get('/videos/:id/vr_video', function(req, res) {
 	})
 });
 
+router.get('/videos/:id/360video', function(req, res) {
+	Video.findById(req.params.id, function(err, video) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('360video', {video: video})
+		}
+	})
+});
+
 module.exports = router;
