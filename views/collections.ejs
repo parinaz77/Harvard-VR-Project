@@ -62,12 +62,13 @@
             <span class="card-title"><%=collection.title %></span>
             <p class="p-desc"><%=collection.description %></p>
           </div>
-          <div class="delete-loc"><a href="/collections/<%=collection._id%>/delete" class="delete-links">Delete</a></div>
+          <%if(collection.id !== '5953f70bfda0c20011e938b2' && collection.id !=='5953f742fda0c20011e938b3') {%>
+          	<div class="delete-loc"><a href="/collections/<%=collection._id%>/delete" class="delete-links">Delete</a></div> <%}%>
           <div class="card-action" id="video-card-action">
-            <a class="collection-links" href="/collections/<%=collection._id%>/curve-vr">VR Curve</a>
-            <a class="collection-links" href="/collections/<%=collection._id%>/regular-vr">VR Pan</a>
-            <a class="collection-links" href="/collections/<%=collection._id%>/cube-vr">VR Cube</a>
-            <a class="collection-links" href="/collections/<%=collection._id%>/flicker">VR Flicker</a>
+            <a class="collection-links" href="/collections/<%=collection._id%>/curve-vr">VR-Curve</a>
+            <a class="collection-links" href="/collections/<%=collection._id%>/regular-vr">VR-Pan</a>
+            <a class="collection-links" href="/collections/<%=collection._id%>/cube-vr">Cube</a>
+            <a class="collection-links" href="/collections/<%=collection._id%>/flicker">Flicker</a>
             <!-- <a href="/collections/<%=collection._id%>/edit">Edit</a> -->
           </div>
           <div class="card-action">

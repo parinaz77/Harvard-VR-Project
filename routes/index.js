@@ -19,7 +19,7 @@ router.get('/collections', function(req, res) {
 		if(err) {
 			console.log(err);
 		} else {
-			// console.log('collections route', collections);
+			// console.log(collections);
 			res.render('collections', {collections: collections})
 		}
 	});
