@@ -69,6 +69,19 @@ router.get('/collections/:id/edit', function(req, res) {
 	})
 });
 
+
+router.get('/videos/:id/delete', function(req, res) {
+	Video.findById(req.params.id, function(err, video) {
+		if(err) {
+			console.log(err);
+		} else {
+			video.remove( function ( err, todo ){
+			res.redirect('/videos');
+    });
+		}
+	})
+});
+
 router.get('/collections/:id/delete', function(req, res) {
 	Collection.findById(req.params.id, function(err, collection) {
 		if(err) {
@@ -208,7 +221,7 @@ router.get('/videos', function(req, res) {
 		if(err) {
 			console.log(err);
 		} else {
-			console.log('videos route', videos);
+			console.log(videos);
 			res.render('videos', {videos: videos})
 		}
 	});

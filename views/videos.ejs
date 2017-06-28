@@ -50,7 +50,9 @@
             <span class="card-title"><%=video.title %></span>
             <p class="p-desc"><%=video.description %></p>
           </div>
-          <div class="delete-loc"><a href="/videos/<%=video._id%>/delete" class="delete-links">Delete</a></div>
+          <%if(video.id !=='5949553c26793c00110a1cdd'){ %>
+          	<div class="delete-loc"><a href="/videos/<%=video._id%>/delete" class="delete-links">Delete</a></div>
+          <%}%>
           <div class="card-action" id="video-card-action">
             <a class="collection-links" href="/videos/<%= video._id%>/vr_video">VR Video</a>
             <a class="collection-links" href="/videos/<%= video._id%>/360video">VR 360 Video</a>
