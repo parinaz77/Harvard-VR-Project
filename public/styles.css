@@ -2,7 +2,7 @@
  body {
  	/*min-height: 1500px;*/
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  color: black !important;
+  color: gray !important;
   font-size: 18px;
  }
 
@@ -161,7 +161,7 @@ h4{
 	padding: 10px 10px !important;
 }
 
-.card{
+.card-front{
 	height: 350px;
 }
 
