@@ -50,7 +50,7 @@
             <span class="card-title"><%=video.title %></span>
             <p class="p-desc"><%=video.description %></p>
           </div>
-          <%if(video.id !=='5949553c26793c00110a1cdd'){ %>
+          <%if(video.id !=='5949553c26793c00110a1cdd' && video.id !=='595f27e68ae41151e09bb391'){ %>
           	<div class="delete-loc"><a href="/videos/<%=video._id%>/delete" class="delete-links">Delete</a></div>
           <%}%>
           <div class="card-action" id="video-card-action">
