@@ -161,6 +161,14 @@ h4{
 	padding: 10px 10px !important;
 }
 
+.card{
+	height: 350px;
+}
+
+.card-content{
+	font-size: 15px;
+}
+
 .delete-loc{
 	text-align: right;
 	padding-right: 10px;
@@ -189,4 +197,8 @@ h4{
 
 .height {
 	height: 400px;
+}
+
+.in-header{
+	font-size: 20px;
 }
