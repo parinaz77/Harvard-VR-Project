@@ -1,79 +1,78 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Curved Images</title>
-    <meta name="description" content="Curved Images - A-Frame">
-    <!-- <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script> -->
-    <script src="https://rawgit.com/aframevr/aframe/f850c2f/dist/aframe-master.min.js"></script>
-    <!-- <script src="dist/aframe-master.js"></script> -->
+    <title>Flicker</title>
   </head>
+  <script src="https://rawgit.com/aframevr/aframe/f850c2f/dist/aframe-master.min.js"></script>
   <body>
+
+    <!-- Initialize Scene -->
     <a-scene>
+
+    <!-- Camera & Cursor Entity -->
       <a-camera position="2 0 3">
         <a-cursor cursor="fuse: true timeout: 3500"></a-cursor>
         </a-entity>
       </a-camera>
 
-
+      <!-- Static Assets -->
       <a-assets>
-       <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <!-- Background and click assets -->
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
         <img id="mozvr" src="http://storage.googleapis.com/harvard-vr/mozvr.png" crossorigin="anonymous" >
         <img id="shadow2" src="http://storage.googleapis.com/harvard-vr/radial-shadow-2.png" crossorigin="anonymous">
+        <!-- End of Background & Click assets -->
+
+        <!-- Main Image Assets -->
         <%if(collection.images.length){ %>
             <%for(var i=0; i < collection.images.length; i++){ %>
               <img id="ui<%=i%>" src="http://storage.googleapis.com/harvard-vr/<%=collection.images[i].name %>" crossorigin="anonymous">
               <%}%>
             <%} else { %>
               <img id="ui1" src="http://storage.googleapis.com/harvard-vr/<%=collection.images.name %>" crossorigin="anonymous">
-            <%}%>
-      </a-assets>
-          
-
-          <a-entity id="scene0">
-            <a-image src="#ui0" radius="5.7" width="40" height="20"
-                      position="0.151 0 -15.071" onClick="nextScene()"
-                      sound="on: click; src: #click-sound"></a-image>
-          </a-entity>
-
-        <%if(collection.images.length){ %>
-            <%for(var i=0; i < collection.images.length; i++){ %>
-              <a-entity id="scene<%=i%>" visible="false">
-                <a-image src="#ui<%=i%>" radius="5.7" width="40" height="20"
-                      position="0.151 0 -15.071"></a-image>
-              </a-entity>
-              <%}%>
-            <%} else { %>
-              <a-entity id="scene0">
-            <a-image src="#ui0" radius="5.7" width="40" height="20"
-                      position="0.151 0 -15.071" onClick="nextScene()"></a-image>
-          </a-entity>
           <%}%>
+          <!-- End of Main Image Assets -->
+      </a-assets>
 
+      <!-- Displayed Images -->
+      <a-entity id="scene0">
+        <a-image id="img1" src="#ui0" radius="5.7" width="40" height="20" position="0.151 0 -15.071" onClick="nextScene()"></a-image>
+      </a-entity>
+
+      <a-entity id="scene1">
+        <a-image id="img2" src="#ui1" radius="5.7" width="40" height="20" position="0.151 0 -15.071" onClick="nextScene()" visible="false"></a-image>
+      </a-entity>
+      <!-- End of Displayed Images -->
+
+      <!-- Background, Sky, Camera, etc. -->
       <a-image position="0 -5 0" src="#shadow2" rotation="-90 0 0" scale="6 6 6"></a-image>
       <a-sky color="#fff"></a-sky>
       <a-entity position="0 0 1.5">
         <a-camera></a-camera>
       </a-entity>
+      <!-- End of initialized Background, Sky, etc. -->
+
     </a-scene>
 
-      <script type="text/javascript">
-        function nextScene(){
-          // for (var z = 1; z < 100; z++) {
-            for (var i = 1; i < 8; i++) {
-                (function(x) {
-                    setTimeout(function() { 
-                      var current= 'scene'+(x-1).toString()
-                      var next = 'scene' + (x).toString()
-                      console.log(current, next)
-                      document.getElementById(current).setAttribute('visible', 'false')
-                      document.getElementById(next).setAttribute('visible', 'true')
-                    }, i*200 );
-                  })(i);
-              }
-            // }
-          }
+    <script type="text/javascript">
+      function nextScene() {
+        console.log("Testing!")
+        let img1 = document.getElementById("img1");
+        let img2 = document.getElementById("img2");
+        for (let i = 0; i < 1000; i++) {
+          setTimeout(function() {
+            if((i % 2) === 0) {
+              console.log(i);
+              img1.setAttribute('visible', 'false');
+              img2.setAttribute('visible', 'true');
+            } else {
+              img2.setAttribute('visible', 'false');
+              img1.setAttribute('visible', 'true');
+            }
+          }, i*200)
+        }
+      }
+    </script>
 
-      </script>
   </body>
 </html>
