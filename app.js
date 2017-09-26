@@ -1,8 +1,9 @@
 const express = require('express');
 const fs = require('fs');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var fileUpload = require('express-fileupload');
-var methodOverride = require('method-override');
+const fileUpload = require('express-fileupload');
+const methodOverride = require('method-override');
 const app = express();
 const indexRoutes = require('./routes/index');
 
@@ -10,6 +11,7 @@ const indexRoutes = require('./routes/index');
 const url = "mongodb://tonyn4444:password@ds113841.mlab.com:13841/harvard-vr" || "mongodb://localhost:27017/harvard-vr";
 mongoose.connect(url);
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(fileUpload());

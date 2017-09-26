@@ -168,15 +168,27 @@ router.get('/slideshow_test/:id', function(req, res) {
 	res.render('slideshow_test');
 });
 
-router.get('/collections/:id/flicker', function(req,res) {
+router.post('/collections/:id/flicker', function(req,res) {
 	Collection.findById(req.params.id, function(err, collection) {
 		if(err) {
+			console.log('ERORORRRRRRRRRRR');
 			console.log(err);
 		} else {
-			res.render('flicker', {collection: collection})
+			res.render('flicker', { collection: collection, interval: Number(req.body.interval) });
 		}
 	})
 });
+
+// router.get('/collections/:id/flicker', function(req,res) {
+// 	Collection.findById(req.params.id, function(err, collection) {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log('FLICKER ROUTE HIT:', req.body);
+// 			res.render('flicker', {collection: collection});
+// 		}
+// 	})
+// });
 
 router.get('/vr_video', function(req, res) {
 	res.render('vr_video');
@@ -187,7 +199,7 @@ router.post('/upload_video', function(req, res) {
 	console.log(image.length, req.files);
 
 	if (image.length) {
-		for (var i=0; i < image.length; i++){
+		for (let i = 0; i < image.length; i++){
 			image[i].mv('uploads/' + req.files.image[i].name);
 			collection.upload('uploads/' + req.files.image[i].name), function(err, file) {
 				if(!err) {

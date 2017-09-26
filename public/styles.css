@@ -6,6 +6,17 @@
   font-size: 18px;
  }
 
+ #flicker-button {
+ 	background-color: #26a69a;
+ 	border: none;
+ 	color: white;
+ }
+
+ #flicker-interval {
+ 	text-align: center;
+ 	border: 2px solid #e1e1e1;
+ }
+
  #partners-header {
  	margin-bottom: 50px;
  }

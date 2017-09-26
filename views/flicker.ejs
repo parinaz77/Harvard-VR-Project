@@ -36,11 +36,11 @@
 
       <!-- Displayed Images -->
       <a-entity id="scene0">
-        <a-image id="img1" src="#ui0" radius="5.7" width="40" height="20" position="0.151 0 -15.071" onClick="nextScene()"></a-image>
+        <a-image id="img1" src="#ui0" radius="5.7" width="40" height="20" position="0.151 0 -15.071" onClick="nextScene(<%=interval%>)"></a-image>
       </a-entity>
 
       <a-entity id="scene1">
-        <a-image id="img2" src="#ui1" radius="5.7" width="40" height="20" position="0.151 0 -15.071" onClick="nextScene()" visible="false"></a-image>
+        <a-image id="img2" src="#ui1" radius="5.7" width="40" height="20" position="0.151 0 -15.071" onClick="nextScene(<%=interval%>)" visible="false"></a-image>
       </a-entity>
       <!-- End of Displayed Images -->
 
@@ -55,12 +55,13 @@
     </a-scene>
 
     <script type="text/javascript">
-      function nextScene() {
-        console.log("Testing!")
+      function nextScene(interval) {
+        // If user doesn't enter interval amount, default to '200'
         let img1 = document.getElementById("img1");
         let img2 = document.getElementById("img2");
         for (let i = 0; i < 1000; i++) {
           setTimeout(function() {
+            console.log('SETTIMEOUT', interval);
             if((i % 2) === 0) {
               console.log(i);
               img1.setAttribute('visible', 'false');
@@ -69,7 +70,7 @@
               img2.setAttribute('visible', 'false');
               img1.setAttribute('visible', 'true');
             }
-          }, i*200)
+          }, i*interval);
         }
       }
     </script>
