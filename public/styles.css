@@ -6,6 +6,10 @@
   font-size: 18px;
  }
 
+.flicker-form{
+	padding-top: 20px;
+	border-top: 1px solid rgba(160,160,160,0.2);
+}
  #flicker-button {
  	background-color: #26a69a;
  	border: none;
@@ -15,6 +19,7 @@
  #flicker-interval {
  	text-align: center;
  	border: 2px solid #e1e1e1;
+	width: 145px;
  }
 
  #partners-header {

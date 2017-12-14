@@ -68,8 +68,8 @@
             <a class="collection-links" href="/collections/<%=collection._id%>/curve-vr">VR-Curve</a>
             <a class="collection-links" href="/collections/<%=collection._id%>/regular-vr">VR-Pan</a>
             <a class="collection-links" href="/collections/<%=collection._id%>/cube-vr">Cube</a>
-            <form method="POST" action="/collections/<%=collection._id%>/flicker">
-            <input type="number" id="flicker-interval" placeholder="Enter Interval Timing for Flicker View (e.g. 1000 for 1 second intervals)" name="interval" />
+            <form class="flicker-form" method="POST" action="/collections/<%=collection._id%>/flicker">
+            <input type="number" id="flicker-interval" placeholder="Enter Interval Timing" name="interval" required/>
             <input id="flicker-button" type="submit" value="Flicker View" />
             </form>
             <!-- <a href="/collections/<%=collection._id%>/edit">Edit</a> -->
